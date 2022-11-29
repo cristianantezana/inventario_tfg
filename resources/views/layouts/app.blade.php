@@ -202,6 +202,7 @@
     <script src="{{asset('js/chart.js')}}"></script>
     <script src="{{asset('js/map.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/funcionesGenerales.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/validaciones.js')}}"></script>
     <script src="{{asset('plugins/sweetalert2/dist/sweetalert2.min.js')}}"></script>
     <script src="{{asset('js/funcionesGenerales.js')}}js/custom.js"></script>
     @yield('script')
