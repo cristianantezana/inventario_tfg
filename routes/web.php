@@ -34,7 +34,7 @@ use App\Models\Usuario;
 */
 
 Route::get('/', function () {
-  return view('layouts.app');
+  return view('bienvenida');
 });
 
 

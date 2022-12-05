@@ -27,8 +27,8 @@ class CategoriaController extends Controller
     $contador = 1;
     if ($categorias->count() > 0)
     {
-      $tabla .= '<table id="table" class="table table-bordered table-striped table-hover"  >
-                  <thead style="background-color: #6777ef;">
+      $tabla .= '<table  class="table table-bordered table-striped table-hover">
+                  <thead class="bg-primary">
                       <tr>
                         <th style="color: #fff;"><center>ITEM</center></th>
                         <th style="color: #fff;"><center>Nombre</center></th>

@@ -39,29 +39,26 @@
     </div>
   </div>
   {{-- fin del modal --}}
-  <div class="content-wrapper">
-    <input type="hidden" id="ruta" value="{{url('/')}}">
-    <div class="content">
-      <div class="row">
-        <div class="col-xl-12">
-          <div class="card text-white bg-primary" style="padding: 6px;">
-            <h4> <center>Lista de presentaciones</center> </h>
-          </div>
-          <div class="card card-default">
-            <div class="card-body">   
-              <div class="row">
-                <div class="form-group col-6">      
-                  <h3 style="color:rgba(17, 16, 16, 0.77)" class="m-b-10">GESTION PRESENTACION </h3>
+  <input type="hidden" id="ruta" value="{{url('/')}}">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="full">
+        <div class="page-header card">
+          <div class="card-block">
+            @if (session('status'))
+                <div class="alert alert-success">{{session('status') }}</div>
+            @endif
+            <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-12">      
+                    <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                      Registrar presentacion <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+                    </button>
+                  </div>
                 </div>
-                <div class="form-group col-6"> 
-                  <button type="button"  style="float: right; color: white; font-weight: bold;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    REGISTRAR PRESENTACION <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
-                  </button>
-                </div>
-              </div>
               <div class="card-block table-border-style">
                 <div class="table-responsive">
-                  <table class="table table-bordered table-striped table-hover" id="table">
+                  <table class="table table-bordered table-striped table-hover" >
                     <thead class="bg-primary">
                       <tr>
                         <th class="text-center" style="color: #fff;"  scope="col">ITEMS</th>
@@ -76,7 +73,7 @@
                       <?php $contador = 1?>
                       @foreach ($presentaciones as $item)
                         <tr>
-                          <th  class="text-center" scope="row"><?php echo $contador;?></th>
+                          <td  class="text-center" scope="row"><?php echo $contador;?></td>
                           <td class="text-center">{{$item->nombre_presentacion}}</td>
                           <td class="text-center">{{$item->medida->nombre_medida}}</td>
                           <td class="text-center">{{$item->medida->sigla_medida}}</td>
@@ -148,7 +145,8 @@
                         <?php  $contador++;?>
                       @endforeach 
                     </tbody>
-                </table>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -156,7 +154,8 @@
       </div>
     </div>
   </div>
- 
+</div>         
+</section>
 @endsection
 @section('script')  
   @if (session('mensaje') == 'ok')

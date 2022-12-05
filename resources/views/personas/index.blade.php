@@ -26,11 +26,11 @@
               <div class="row">
                 <div class="form-group col-6"> 
                   <label for="nombre">Celular</label>
-                  <input type="number" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
+                  <input type="number" min="0"  class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
                 </div>
                 <div class="form-group col-6"> 
                   <label for="apaterno">Telefono</label>
-                  <input type="number" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
+                  <input type="number" min="0" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
                 </div>
               </div>
               <div class="row">
@@ -59,17 +59,14 @@
                     <div class="alert alert-success">{{session('status') }}</div>
                 @endif
                 <div class="card-body">
-                  <h2 style="color:rgba(17, 16, 16, 0.77)" class="m-b-10">GESTION PERSONA</h2>
-                  <div class="card-body">
-                    
                     <div class="row">
-                      <div class="input-group col-6">
+                      <div class="input-group col-4">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
                         </div>
-                        <input class="form-control" id="buscar" name="buscar" type="text" placeholder="Buscar Persona....."/>
+                        <input class="form-control" id="buscar" name="buscar" type="text"  onkeypress="return soloLetras(event)" placeholder="Buscar por nombre,apellido....."/>
                       </div>
-                      <div class="form-group col-6">      
+                      <div class="form-group col-8">      
                         <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                           REGISTRAR PERSONA <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
                         </button>
@@ -93,7 +90,7 @@
                           <?php $contador = 1?>
                           @foreach ($personas as $item)
                             <tr>
-                              <th  class="text-center" scope="row"><?php echo $contador;?></th>
+                              <td  class="text-center" scope="row"><?php echo $contador;?></td>
                               <td class="text-center">{{$item->nombre}}</td>
                               <td class="text-center">{{$item->apellido}}</td>
                               <td class="text-center">{{$item->celular}}</td>
@@ -138,11 +135,11 @@
                                           <div class="row">
                                             <div class="form-group col-6"> 
                                                 <label for="nombre">Celular</label>
-                                                <input type="number" value="{{$item->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
+                                                <input type="number" min="0"  value="{{$item->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
                                             </div>
                                             <div class="form-group col-6"> 
                                                 <label for="apaterno">Telefono</label>
-                                                <input type="number" value="{{$item->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
+                                                <input type="number" min="0"  value="{{$item->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
                                             </div>
                                           </div>
                                           <div class="row">
@@ -190,7 +187,7 @@
   @endif    
   <script type="text/javascript">
     let clase = 'eliminarPersona';
-    let mensaje = "De elimnar a este Registro!";
+    let mensaje = "De eliminar a este registro!";
     eliminarPorRuta(mensaje,clase);
     $('body').on('keyup', '#buscar', function(){
       let buscar = $(this).val();
@@ -211,7 +208,7 @@
             let cod = value.cod_persona;
             let url = 'action="{{url('/')}}/personas/destroy/'+cod+'"';
             tabla = `<tr>
-                      <th class="text-center">${contador}</th>
+                      <td class="text-center">${contador}</td>
                       <td class="text-center">${value.nombre}</td>
                       <td class="text-center">${value.apellido}</td>
                       <td class="text-center">${value.celular}</td>

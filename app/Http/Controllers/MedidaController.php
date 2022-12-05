@@ -20,8 +20,8 @@ class MedidaController extends Controller
     $contador = 1;
     if ($medida->count() > 0)
     {
-      $tabla .= '<table id="table_medida" class="table table-striped cell-border" style="width:100%">
-                    <thead style="background-color: #6777ef;">
+      $tabla .= '<table  class="table table-bordered table-striped table-hover">
+                    <thead class="bg-primary">
                         <tr>
                           <th style="color: #fff;"><center>ITEM</center></th>
                           <th style="color: #fff;"><center>Nombre</center></th>

@@ -32,11 +32,6 @@
   {{-- fin modal editar --}}
   <div class="content-wrapper">
     <div class="content">
-      <div class="card card-default">
-        <div class="px-6 py-4">
-          <h2>GESTION CATEGORIA</h2>
-        </div>
-      </div>
       <div class="row">
         <div class="col-xl-4">
           <div class="card text-white bg-primary" style="padding: 6px;">

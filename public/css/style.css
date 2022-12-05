@@ -51,6 +51,36 @@
 *::after {
   box-sizing: border-box;
 }
+.slider-container img {
+  scroll-snap-align: center;
+}
+.slider-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow-x: scroll;
+}
+
+.slider-container img {
+  flex: 0 0 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.slider-container {
+  display: flex;
+  width: 100%;
+  height: 80vh;
+ 
+}
+
+.slider-container img {
+  flex: 0 0 100%;
+  width: 100%;
+  object-fit: cover;
+
+  /* Vamos a añadir esto 👇 */
+  scroll-snap-align: center;
+}
 .modal-header-success {
   color:#fff;
   padding:9px 15px;
@@ -1729,8 +1759,8 @@ pre code {
 }
 .table th,
 .table td {
-  padding: 0.75rem;
-  vertical-align: top;
+  padding: 0.25rem;
+  /* vertical-align: top; */
   border-top: 1px solid #e5e9f2;
 }
 .table thead th {
@@ -2689,9 +2719,10 @@ fieldset:disabled a.btn {
 }
 
 .btn-warning {
-  color: #2f2f2f;
+  color:   #f2f2f2;
   background-color: #fec400;
-  border-color: #fec400;
+  
+  border-color: #f0f1f5;;
 }
 .btn-warning:hover {
   color: #2f2f2f;
@@ -3143,8 +3174,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-sm, .btn-group-sm > .btn {
-  padding: 0.125rem 0.625rem;
-  font-size: 0.75rem;
+  padding: 0.125rem 0.625rem !important;
+  font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.2rem;
 }
@@ -4674,6 +4705,8 @@ input[type=button].btn-block {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.875rem;
+  margin: 8px;
+  border: 1px solid #595b5e57;
 }
 
 .card-title {
