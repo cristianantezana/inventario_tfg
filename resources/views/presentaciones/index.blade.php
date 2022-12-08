@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modal-header-primary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PRESENTACION</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Regitrar presentación</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -16,12 +16,12 @@
             <div class="row">
               <div class="form-group col-12"> 
                 <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre"  required>
+                <input type="text" class="form-control" id="nombre" name="nombre" onkeypress="return soloLetras(event)"  required>
               </div>   
             </div>
             <div class="row">
               <div class="form-group col-12"> 
-                <label for="medida_id">Seleccione la Medida<span class="required">*</span></label>
+                <label for="medida_id">Seleccione la medida<span class="required">*</span></label>
                 <select name="medida_id" class="form-control selectric">   
                     @foreach($medida as $item)
                       <option value="{{$item->cod_medida}}">{{$item->nombre_medida.' '.'('.$item->sigla_medida.')'}}</option>
@@ -52,7 +52,7 @@
                 <div class="row">
                   <div class="form-group col-12">      
                     <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      Registrar presentacion <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+                      Registrar presentación <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
                     </button>
                   </div>
                 </div>
@@ -103,7 +103,7 @@
                               <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                   <div class="modal-header modal-header-warning">
-                                    <h4 class="modal-title" id="exampleModalLabel">EDITAR PRODUCTO</h4>
+                                    <h4 class="modal-title" id="exampleModalLabel">Editar presentción</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
@@ -115,12 +115,12 @@
                                       <div class="row">
                                         <div class="form-group col-12"> 
                                           <label for="nombre">Nombre</label>
-                                          <input value="{{$item->nombre_presentacion}}" type="text" class="form-control" id="nombre" name="nombre"  required>
+                                          <input value="{{$item->nombre_presentacion}}" type="text" class="form-control" id="nombre" name="nombre" onkeypress="return soloLetras(event)"  required>
                                         </div>      
                                       </div>
                                       <div class="row">
                                         <div class="form-group col-12"> 
-                                          <label for="medida_id">Seleccione la Categoria<span class="required">*</span></label>
+                                          <label for="medida_id">Seleccione medida<span class="required">*</span></label>
                                           <select name="medida_id" class="form-control selectric">   
                                             @foreach($medida as $producto)
                                               @if($producto->cod_medida==$item->medida->cod_medida)

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
 <input type="hidden" id="ruta" value="{{url('/')}}">
 <div class="row">

@@ -1,11 +1,47 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content ">
+        <div class="modal-header modal-header-primary">
+          <h5 class="modal-title" id="exampleModalLabel">Registrar medida</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+   
+        <form action="#" method="POST" id="agregar_form" >
+            @csrf
+          <div class="modal-body">   
+          <div class="row">
+                <div class="form-group col-6"> 
+                <label for="nombre_medida" >Nombre de la medida</label>
+            <input type="text"   name ="nombre_medida" class="form-control form-control-round" placeholder="Nombre" onkeypress="return soloLetras(event)" required>
+                </div>
+                <div class="form-group col-6"> 
+                <label for="sigla_medida" >Sigla de la medida</label>
+                <input type="text"   name ="sigla_medida" class="form-control form-control-round" placeholder="Sigla"  onkeypress="return soloLetras(event)" required>
+                </div>
+              </div>
+         
+
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Fin de Modal -->
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header modal-header-warning">
-          <h5 class="modal-title" id="staticBackdropLabel">EDITAR MEDIDA</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Editar medida</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -16,67 +52,56 @@
               <div class="col-lg">
                   @csrf
                   <input type="hidden" name="medida_id" id="medida_id">
-                  <label for="nombre_medida" >Nombre de la Medida</label>
-                  <input type="text"   name ="nombre_medida" class="form-control form-control-round" placeholder="Nombre......." id="nombre_medida" onkeypress="return soloLetras(event)" required>
+                  <label for="nombre_medida" >Nombre de la medida</label>
+                  <input type="text" id="nombre_medida"  name ="nombre_medida" class="form-control form-control-round"  onkeypress="return soloLetras(event)" required>
                   <br>
-                  <label for="sigla_medida" >Sigla de la Medida</label>
-                  <input type="text"   name ="sigla_medida" class="form-control form-control-round" placeholder="Sigla......." id="sigla_medida" onkeypress="return soloLetras(event)" required>
+                  <label for="sigla_medida" >Sigla de la medida</label>
+                  <input type="text" id="sigla_medida"  name ="sigla_medida" class="form-control form-control-round" onkeypress="return soloLetras(event)" required>
                   <br>
               </div>
             </div>  
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-            <button  type="submit" id="editar_btn" class="btn btn-success" >GUARDAR</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button  type="submit" id="editar_btn" class="btn btn-warning" >Editar</button>
           </div>
         </form>
       </div>
     </div>
   </div>
   {{-- fin modal editar --}}
-  <div class="content-wrapper">
-    <div class="content">
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="card text-white bg-primary" style="padding: 6px;">
-            <h4> <center>Registrar Medidas</center> </h>
-          </div>
-          <div class="card card-default">
-            <div class="card-body">
-              <form action="#" method="POST" id="agregar_form" >
-                @csrf
-                <div class="form-group">
-                  <label for="nombre_medida" >Nombre de la Medida</label>
-                  <input type="text"   name ="nombre_medida" class="form-control form-control-round" placeholder="Nombre......." id="nombre_medida" onkeypress="return soloLetras(event)" required>
+  <input type="hidden" id="ruta" value="{{url('/')}}">
+<div class="row">
+  <div class="col-md-12">
+    <div class="full">
+      <div class="page-header card">
+        <div class="card-block">
+          @if (session('status'))
+              <div class="alert alert-success">{{session('status') }}</div>
+          @endif
+          <div class="card-body">
+              <div class="row">
+                <div class="form-group col-12">      
+                  <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" 
+                  data-toggle="modal" data-target="#exampleModal">Registra medida <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+                  </button>
                 </div>
-                <div class="form-group">
-                  <label for="sigla_medida" >Sigla de la Medida</label>
-                  <input type="text"   name ="sigla_medida" class="form-control form-control-round" placeholder="Sigla......." id="sigla_medida" onkeypress="return soloLetras(event)" required>
-                </div>
-                <div class="form-footer mt-12">
-                  <button type="submit" class="btn btn-primary btn-pill  btn-block">GUARDAR</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-8">
-          <div class="card text-white bg-primary" style="padding: 6px;">
-            <h4> <center>Lista de medidas</center> </h>
-          </div>
-          <div class="card card-default">
-            <div class="card-body">   
+              </div>
+            <div class="card-block table-border-style">
+              <div class="table-responsive"> 
               <div id="datatable-table" ></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+</div> 
 @endsection
 @section('script')  
   <script type="text/javascript">
-  console.log('ola');
       function tableMedida()
       {
         $.ajax
@@ -108,6 +133,7 @@
           {
             if(response.status == 200)
             {
+              $("#exampleModal").modal('hide');
               Swal.fire(
                 'Agregado!',
                 'Medida añadido con éxito!',

@@ -12755,7 +12755,8 @@ code {
 }
 @media (min-width: 1200px) {
   .navbar .navbar-right .navbar-nav .user-menu .dropdown-toggle > span {
-    max-width: 120px;
+    
+    max-width: 220px;
   }
 }
 @media (min-width: 1500px) {

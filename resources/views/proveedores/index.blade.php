@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
 <input type="hidden" id="ruta" value="{{url('/')}}">
 <div class="row">
@@ -82,25 +82,25 @@
                                             <div class="row">
                                             <div class="form-group col-6"> 
                                                 <label for="celular">Celular</label>
-                                                <input type="number" min="0" value="{{$proveedor->persona->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
+                                                <input type="number" min="69000000" max="79999999" value="{{$proveedor->persona->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
                                             </div>
                                             <div class="form-group col-6"> 
-                                                <label for="telefono">Telefono</label>
-                                                <input type="number" min="0" value="{{$proveedor->persona->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);" >
+                                                <label for="telefono">Celular secundario</label>
+                                                <input type="number" min="69000000" max="79999999" value="{{$proveedor->persona->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);" >
                                             </div>
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-6"> 
-                                                    <label for="direccion">Direccion</label>
+                                                    <label for="direccion">Dirección</label>
                                                     <input type="text" value="{{$proveedor->persona->direccion}}" class="form-control" id="direccion" name="direccion"  required>
                                                 </div>
                                                 <div class="form-group col-3"> 
                                                     <label for="empresa">Empresa</label>
-                                                    <input type="text" value="{{$proveedor->empresa}}" class="form-control" id="nit" name="empresa"  required>
+                                                    <input type="text" value="{{$proveedor->empresa}}" onkeypress="return soloLetras(event)" class="form-control" id="nit" name="empresa"  required>
                                                 </div>
                                                 <div class="form-group col-3"> 
-                                                    <label for="razon_social">Razon Social</label>
-                                                    <input type="text" value="{{$proveedor->razon_social}}" class="form-control" id="razon_social" name="razon_social"  required>
+                                                    <label for="razon_social">Razon social</label>
+                                                    <input type="text" value="{{$proveedor->razon_social}}" onkeypress="return soloLetras(event)" class="form-control" id="razon_social" name="razon_social"  required>
                                                 </div>
                                             </div>
                                         </div>

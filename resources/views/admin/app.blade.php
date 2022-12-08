@@ -43,7 +43,7 @@
                 <a class="sidenav-item-link" href="{{route('personas.index')}}">
                   
                   <i class="fa fa-home" aria-hidden="true"></i>
-                  <span class="nav-text">INICIO</span>
+                  <span class="nav-text">Inicio</span>
                 </a>
               </li>
               <li class="section-title">
@@ -138,8 +138,7 @@
               <ul class="nav navbar-nav">
                 <li class="dropdown user-menu">
                   <button class="dropdown-toggle nav-link" data-toggle="dropdown">
-                    <img src="images/user/user-xs-01.jpg" class="user-image rounded-circle" alt="User Image" />
-                    <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
+                    <span class="d-none d-lg-inline-block">{{ Auth::user()->persona->apellido}}</span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li>

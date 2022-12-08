@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                          <button type="submit" class="btn btn-warning">EDITAR</button>
+                                          <button type="submit" class="btn btn-warning">Editar</button>
                                         </div>
                                       </form>
                                     </div>

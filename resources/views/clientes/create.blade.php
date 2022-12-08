@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,7 +67,7 @@
                           <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
                           
                         </div>
-                        <input class="form-control" id="busqueda_persona" name="buscar" type="text" placeholder="Buscar persona por nombre....."/>
+                        <input class="form-control" id="busqueda_persona" name="buscar" type="text" onkeypress="return soloLetras(event)" placeholder="Buscar persona por nombre....."/>
                       </div>
                     </div>
                     <div class="col-md-6">

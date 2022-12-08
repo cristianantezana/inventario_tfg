@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header modal-header-primary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PERSONA</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar persona</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,11 +26,11 @@
               <div class="row">
                 <div class="form-group col-6"> 
                   <label for="nombre">Celular</label>
-                  <input type="number" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
+                  <input type="number"  min="69000000" max="79999999"  class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
                 </div>
                 <div class="form-group col-6"> 
-                  <label for="apaterno">Telefono</label>
-                  <input type="number" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
+                  <label for="apaterno">Celular secundario</label>
+                  <input type="number"  min="69000000" max="79999999" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
                 </div>
               </div>
               <div class="row">
@@ -53,7 +53,7 @@
     <div class="px-6 py-4">
       <section class="section">
         <div class="section-header modal-header-primary">
-            <h4 class="page__heading">Nuevo Proveedor</h4>
+            <h4 class="page__heading">Nuevo proveedor</h4>
         </div>
         <div class="section-body">
           <div class="row">
@@ -66,13 +66,13 @@
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
                         </div>
-                        <input class="form-control" id="busqueda_persona" name="buscar" type="text" placeholder="Buscar Persona....."/>
+                        <input class="form-control" id="busqueda_persona" name="buscar" type="text" onkeypress="return soloLetras(event)" placeholder="Buscar persona por nombre....."/>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="card mb-2">
-                        <a type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-info" style=" color: white; font-weight: bold;">
-                            Nuevo Persona <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                        <a type="button"  data-toggle="modal" data-target="#exampleModal"  class="btn btn-primary" style=" color: white; font-weight: bold;">
+                          Registrar persona <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
                             </span>
                         </a>
                       </div>        
@@ -92,14 +92,14 @@
                         <div class="form-group">
                             <label for="nombre">Nombre<span class="required">*</span></label>
                             <input @if(session('persona'))value="{{ session('persona.nombre')}} {{ session('persona.apellido')}}"@endif 
-                            type="text" class="form-control"  name="nombre" required="required"  readonly placeholder="Nombre Proveedor..">
+                            type="text" class="form-control"  name="nombre" required="required"  readonly placeholder="Nombre">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="celular">Celular<span class="required">*</span></label>
                             <input type="number"  @if(session('persona')) value="{{ session('persona.celular') }}"@endif 
-                              class="form-control" name="celular" placeholder="Nro de Celular" readonly>
+                              class="form-control" name="celular" placeholder="Celular" readonly>
                         </div>
                       </div>
                     </div>
@@ -108,13 +108,13 @@
                         <div class="form-group">
                           <label for="direccion">Direccion<span class="required">*</span></label>
                           <input @if(session('persona')) value="{{ session('persona.direccion')}}" @endif 
-                          type="text" class="form-control " name="direccion" placeholder="Direccion.." readonly>
+                          type="text" class="form-control " name="direccion" placeholder="Dirección" readonly>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="nit">Empresa<span class="required">*</span></label>
-                          <input type="text" class="form-control " name="empresa" placeholder="Empresa" >
+                          <input type="text" class="form-control " name="empresa" placeholder="Empresa" onkeypress="return soloLetras(event)" >
                         </div>
                       </div>
                     </div>
@@ -122,7 +122,7 @@
                       <div class="col-md-6">
                         <div class="form-group">
                             <label for="estado">Razon Social<span class="required">*</span></label>
-                            <input type="text" class="form-control " name="razon_social" placeholder="Razon Social.">
+                            <input type="text" class="form-control " name="razon_social" placeholder="Razon social" onkeypress="return soloLetras(event)">
                         </div>
                       </div>
                     </div>

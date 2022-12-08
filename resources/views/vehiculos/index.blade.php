@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content ">
         <div class="modal-header modal-header-primary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR VEHICULOS</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar vehiculo</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,17 +15,17 @@
           <div class="modal-body">
               <div class="row">
                 <div class="form-group col-6"> 
-                  <label for="placa">PLACA</label>
-                  <input type="text" class="form-control" id="placa" name="placa"  required>
+                  <label for="placa">Placa</label>
+                  <input type="text" class="form-control" id="placa" name="placa" onkeypress="return check(event)"  required>
                 </div>
                 <div class="form-group col-6"> 
-                  <label for="marca">MARCA</label>
+                  <label for="marca">Marca</label>
                   <input type="text" class="form-control" id="marca" name="marca" onkeypress="return soloLetras(event)" required >
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-6"> 
-                  <label for="color">COLOR</label>
+                  <label for="color">Color</label>
                   <input type="text" class="form-control" id="celular" name="color" onkeypress="return soloLetras(event)" required>
                 </div>
               </div>
@@ -93,7 +93,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header modal-header-warning">
-                                  <h4 class="modal-title" id="exampleModalLabel">EDITAR VEHICULO</h4>
+                                  <h4 class="modal-title" id="exampleModalLabel">Editar vehiculo</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -104,24 +104,24 @@
                                   <div class="modal-body">
                                     <div class="row">
                                       <div class="form-group col-6"> 
-                                          <label for="nombre">PLACA</label>
-                                          <input type="text" class="form-control"  name="placa" value="{{$item->placa}}" required>
+                                          <label for="nombre">Placa</label>
+                                          <input type="text" class="form-control" onkeypress="return check(event)"  name="placa" value="{{$item->placa}}" required>
                                       </div>
                                       <div class="form-group col-6"> 
-                                          <label for="apaterno">MARCA</label>
+                                          <label for="apaterno">Marca</label>
                                           <input type="text" value="{{$item->marca}}" class="form-control" name="marca" onkeypress="return soloLetras(event)" required>
                                       </div>
                                     </div>
                                     <div class="row">
                                       <div class="form-group col-6"> 
-                                          <label for="nombre">COLOR</label>
+                                          <label for="nombre">Color</label>
                                           <input type="text" value="{{$item->color}}" class="form-control" id="color" name="color" onkeypress="return soloLetras(event)"  required>
                                       </div> 
                                     </div>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                    <button type="submit" class="btn btn-warning">Editar</button>
                                   </div>
                                 </form>
                               </div>
@@ -157,7 +157,7 @@
   <script type="text/javascript">
     let tabla = 'table';
     let clase = 'eliminarVehiculo';
-    let mensaje = "De elimnar a este Vehiculo!";
+    let mensaje = "De eliminar a este vehiculo";
     tableEs(tabla);
     eliminarPorRuta(mensaje,clase);
   </script>

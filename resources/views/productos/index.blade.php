@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header modal-header-primary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PRODUCTO</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar producto</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -16,12 +16,12 @@
             <div class="row">
                 <div class="form-group col-8"> 
                   <label for="nombre">Nombre</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre"  required>
+                  <input type="text" class="form-control" id="nombre" name="nombre" onkeypress="return soloLetras(event)"  required>
                 </div>
             </div>
             <div class="row">
               <div class="form-group col-6"> 
-                <label for="categoria_id">Seleccione la Categoria<span class="required">*</span></label>
+                <label for="categoria_id">Seleccione la categoria<span class="required">*</span></label>
                 <select name="categoria_id" class="form-control selectric">
                     @foreach($categorias as $item)
                       <option value="{{$item->cod_categoria}}">{{$item->nombre_categoria}}</option>
@@ -29,7 +29,7 @@
                 </select>
               </div>
               <div class="form-group col-6"> 
-                <label for="presentacion_id">Seleccione la Presentacion<span class="required">*</span></label>
+                <label for="presentacion_id">Seleccione la presentación<span class="required">*</span></label>
                 <select name="presentacion_id" class="form-control selectric">
                     @foreach($presentacion as $item)
                       <option value="{{$item->cod_presentacion}}">{{$item->medida->nombre_medida.'- '.$item->nombre_presentacion}}</option>
@@ -111,7 +111,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                               <div class="modal-content">
                                 <div class="modal-header modal-header-warning">
-                                  <h4 class="modal-title" id="exampleModalLabel">EDITAR PRODUCTO</h4>
+                                  <h4 class="modal-title" id="exampleModalLabel">Editar producto</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -123,12 +123,12 @@
                                     <div class="row">
                                       <div class="form-group col-8"> 
                                         <label for="nombre">Nombre</label>
-                                        <input value="{{$item->nombre_producto}}" type="text" class="form-control" id="nombre" name="nombre"  required>
+                                        <input value="{{$item->nombre_producto}}" onkeypress="return soloLetras(event)" type="text" class="form-control" id="nombre" name="nombre"  required>
                                       </div> 
                                     </div>
                                     <div class="row">
                                       <div class="form-group col-6"> 
-                                        <label for="categoria_id">Seleccione la Categoria<span class="required">*</span></label>
+                                        <label for="categoria_id">Seleccione la categoria<span class="required">*</span></label>
                                         <select name="categoria_id" class="form-control selectric">    
                                           @foreach($categorias as $producto)
                                             @if($producto->cod_categoria==$item->categoria->cod_categoria)
@@ -140,7 +140,7 @@
                                         </select>
                                       </div>
                                       <div class="form-group col-6"> 
-                                        <label for="presentacion_id">Seleccione la Presentacion<span class="required">*</span></label>
+                                        <label for="presentacion_id">Seleccione la presentación<span class="required">*</span></label>
                                         <select name="presentacion_id" class="form-control selectric">
                                           @foreach($presentacion as $producto)
                                             @if($producto->cod_presentacion==$item->presentacion->cod_presentacion)
@@ -154,7 +154,7 @@
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                    <button type="submit" class="btn btn-warning">EDITAR</button>
+                                    <button type="submit" class="btn btn-warning">Editar</button>
                                   </div>
                                 </form>
                               </div>
