@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
  <!-- Modal -->
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

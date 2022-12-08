@@ -59,7 +59,7 @@
                                     <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header modal-header-warning">
-                                        <h4 class="modal-title" id="exampleModalLabel">EDITAR CLIENTE</h4>
+                                        <h4 class="modal-title" id="exampleModalLabel">Editar cliente</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -82,11 +82,11 @@
                                             <div class="row">
                                             <div class="form-group col-6"> 
                                                 <label for="celular">Celular</label>
-                                                <input type="number" min="0" value="{{$cliente->persona->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"   required>
+                                                <input type="number" min="69000000" max="79999999" value="{{$cliente->persona->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"   required>
                                             </div>
                                             <div class="form-group col-6"> 
-                                                <label for="telefono">Telefono</label>
-                                                <input type="number" min="0" value="{{$cliente->persona->celular_2}}" class="form-control" id="telefono" name="telefono"  onkeypress="return valideKey(event);" >
+                                                <label for="telefono">Celular secundario</label>
+                                                <input type="number" min="69000000" max="79999999" value="{{$cliente->persona->celular_2}}" class="form-control" id="telefono" name="telefono"  onkeypress="return valideKey(event);" >
                                             </div>
                                             </div>
                                             <div class="row">
@@ -96,11 +96,11 @@
                                                 </div>
                                                 <div class="form-group col-3"> 
                                                     <label for="nit">Nit</label>
-                                                    <input type="number" value="{{$cliente->nit}}" class="form-control" id="nit" name="nit"  required>
+                                                    <input type="number" min="100000000000" max="99999999999"  value="{{$cliente->nit}}" class="form-control" id="nit" name="nit"  required>
                                                 </div>
                                                 <div class="form-group col-3"> 
                                                     <label for="razon_social">Razon Social</label>
-                                                    <input type="text" value="{{$cliente->razon_social}}" class="form-control" id="razon_social" name="razon_social"  required>
+                                                    <input type="text" value="{{$cliente->razon_social}}" class="form-control" id="razon_social" name="razon_social" onkeypress="return soloLetras(event)"  required>
                                                 </div>
                                             </div>
                                         </div>
@@ -178,7 +178,7 @@
                 {
                   Swal.fire({
                   type: 'success',
-                  title: '!El registro ha siddo eliminado...',
+                  title: 'El registro ha sido eliminado.',
                   showConfirmButton: true,
                   confirmButtonText: 'Cerrar',
                   }).then((result) => {

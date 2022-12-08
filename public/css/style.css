@@ -2125,7 +2125,7 @@ pre code {
   color: #495057;
   background-color: #ffffff;
   background-clip: padding-box;
-  border: 1px solid #e5e9f2;
+  border: 1px solid #a8adb8;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -2141,7 +2141,8 @@ pre code {
 .form-control:focus {
   color: #495057;
   background-color: #ffffff;
-  border-color: #e4d6f6;
+  border: 1px solid #a8adb8;
+
   outline: 0;
   box-shadow: 0 0 0 0.2rem transparent;
 }
@@ -2172,7 +2173,7 @@ select.form-control:-moz-focusring {
   text-shadow: 0 0 0 #495057;
 }
 select.form-control:focus::-ms-value {
-  color: #495057;
+  color: #a8adb8;;
   background-color: #ffffff;
 }
 
@@ -11719,7 +11720,7 @@ button {
 
 /* ===== BUTTONS ===== */
 .btn {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   box-shadow: none !important;
   padding: 0.3125rem 1rem;
 }

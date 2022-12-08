@@ -9,7 +9,7 @@ class ProveedorController extends Controller
 {
   public function index()
   {
-    $proveedores= Proveedor::where('estado', '=', 1)->take(10)->get();
+    $proveedores= Proveedor::where('estado', '=', 1)->take(10)->orderBy('cod_proveedor', 'desc')->get();
     return view('proveedores.index', compact('proveedores'));
   }
 

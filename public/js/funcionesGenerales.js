@@ -70,7 +70,7 @@ function  eliminarPorRuta(mensaje,clase){
                 {
                   Swal.fire({
                     type: 'success',
-                    title: '!El registro ha siddo eliminado...',
+                    title: 'El registro ha sido eliminado...',
                     showConfirmButton: true,
                     confirmButtonText: 'Cerrar',
                     }).then((result) => {

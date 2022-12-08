@@ -1,8 +1,7 @@
 <?php
 
-
-use App\Http\Controllers\PersonaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonaController;
 use App\Models\Persona;
 use App\Models\Catalogo;
 use App\Http\Controllers\CatalogoController;
@@ -22,6 +21,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VehiculoController;
 use App\Models\Cliente;
 use App\Models\Usuario;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,21 +34,27 @@ use App\Models\Usuario;
 */
 
 Route::get('/', function () {
-  return view('bienvenida');
+    return view('auth.login');
+});
+
+require __DIR__.'/auth.php';
+Route::group(['middleware'=> ['auth']], function(){
+    Route::get('/dashboard', function () {
+        return view('bienvenida');
+    })->middleware(['auth'])->name('dashboard');
+    /*Rutas Personas */
+    Route::get('personas',[PersonaController::class, 'index'])->name('personas.index');
+    Route::get('personas/create',[PersonaController::class, 'create'])->name('personas.create');
+    Route::post('personas/buscar',[PersonaController::class, 'buscar'])->name('personas.buscar');
+    Route::post('personas/store',[PersonaController::class, 'store'])->name('personas.store');
+    Route::get('personas/{id}/edit',[PersonaController::class, 'edit'])->name('personas.edit');
+    Route::put('personas/update/{id}',[PersonaController::class, 'update'])->name('personas.update');
+    Route::get('personas/{id}/show',[PersonaController::class, 'show'])->name('personas.show');
+    Route::delete('personas/destroy/{id}',[PersonaController::class, 'destroy'])->name('personas.destroy');
 });
 
 
-Route::post('usuarios/login',[UsuarioController::class, 'login'] )->name('usuarios.login');
 
-/*Rutas Personas */
-Route::get('personas',[PersonaController::class, 'index'])->name('personas.index');
-Route::get('personas/create',[PersonaController::class, 'create'])->name('personas.create');
-Route::post('personas/buscar',[PersonaController::class, 'buscar'])->name('personas.buscar');
-Route::post('personas/store',[PersonaController::class, 'store'])->name('personas.store');
-Route::get('personas/{id}/edit',[PersonaController::class, 'edit'])->name('personas.edit');
-Route::put('personas/update/{id}',[PersonaController::class, 'update'])->name('personas.update');
-Route::get('personas/{id}/show',[PersonaController::class, 'show'])->name('personas.show');
-Route::delete('personas/destroy/{id}',[PersonaController::class, 'destroy'])->name('personas.destroy');
 
 /*Rutas Catalogos */
 Route::get('catalogos',[CatalogoController::class, 'index'])->name('catalogos.index');

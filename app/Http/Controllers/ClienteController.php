@@ -8,7 +8,7 @@ class ClienteController extends Controller
 {
   public function index()
   {
-    $clientes = Cliente::where('estado', '=', 1)->take(10)->get();
+    $clientes = Cliente::where('estado', '=', 1)->take(10)->orderBy('cod_cliente', 'desc')->get();
     return view('clientes.index', compact('clientes'));
   }
 
@@ -24,6 +24,7 @@ class ClienteController extends Controller
     $cliente->nit = $request->input('nit');
     $cliente->razon_social = $request->input('razon_social');
     $cliente->save();
+    return redirect()->route('clientes.index')->with('mensaje', 'ok');
   }
 
   public function show($id)

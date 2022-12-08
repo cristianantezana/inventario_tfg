@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('admin.app')
 @section('contenido')
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header modal-header-primary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR PERSONA</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar persona</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -26,11 +26,11 @@
               <div class="row">
                 <div class="form-group col-6"> 
                   <label for="nombre">Celular</label>
-                  <input type="number" min="0"  class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
+                  <input type="number"  min="69000000" max="79999999"  class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);" required>
                 </div>
                 <div class="form-group col-6"> 
-                  <label for="apaterno">Telefono</label>
-                  <input type="number" min="0" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
+                  <label for="apaterno">Celular secundario</label>
+                  <input type="number"  min="69000000" max="79999999" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
                 </div>
               </div>
               <div class="row">
@@ -68,7 +68,7 @@
                       </div>
                       <div class="form-group col-8">      
                         <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          REGISTRAR PERSONA <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+                          Registrar persona  <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
                         </button>
                       </div>
                     </div>
@@ -113,7 +113,7 @@
                                   <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                       <div class="modal-header modal-header-warning">
-                                        <h4 class="modal-title" id="exampleModalLabel">EDITAR PERSONA</h4>
+                                        <h4 class="modal-title" id="exampleModalLabel">Editar persona</h4>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
@@ -135,11 +135,11 @@
                                           <div class="row">
                                             <div class="form-group col-6"> 
                                                 <label for="nombre">Celular</label>
-                                                <input type="number" min="0"  value="{{$item->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
+                                                <input type="number" min="69000000" max="79999999"  value="{{$item->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"  required>
                                             </div>
                                             <div class="form-group col-6"> 
-                                                <label for="apaterno">Telefono</label>
-                                                <input type="number" min="0"  value="{{$item->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
+                                                <label for="apaterno">Celular secundario</label>
+                                                <input type="number" min="69000000" max="79999999"  value="{{$item->celular_2}}" class="form-control" id="telefono" name="telefono" onkeypress="return valideKey(event);">
                                             </div>
                                           </div>
                                           <div class="row">
