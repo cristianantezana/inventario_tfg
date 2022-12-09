@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-6"> 
-                                                    <label for="direccion">Direccion</label>
+                                                    <label for="direccion">Dirección</label>
                                                     <input type="text" value="{{$cliente->persona->direccion}}" class="form-control" id="direccion" name="direccion"  required>
                                                 </div>
                                                 <div class="form-group col-3"> 

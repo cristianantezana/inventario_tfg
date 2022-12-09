@@ -72,6 +72,11 @@
                         <span class="nav-text">Proveedores</span>
                       </a>
                     </li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{route('usuarios.index')}}">
+                        <span class="nav-text">Usuarios</span>
+                      </a>
+                    </li>
                   </div>
                 </ul>
               </li> 
@@ -142,7 +147,7 @@
                   </button>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li>
-                      <a class="dropdown-link-item" href="user-profile.html">
+                      <a class="dropdown-link-item" href="{{ route('usuarios.edit', Auth::user()->id) }}">
                         <i class="mdi mdi-account-outline"></i>
                         <span class="nav-text">Perfil</span>
                       </a>

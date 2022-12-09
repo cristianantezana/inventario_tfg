@@ -26,13 +26,27 @@
     <img  class="slider-item" src="{{asset('images/logoooo.jpg')}}" alt="Slide Image"> 
   </div>  
 @endsection
-@section('script')  
+@section('script') 
+@isset($mensaje)
+@if ($mensaje == 'ok')
+<script>
+  console.log('perra');
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Realizado correctamente',
+    showConfirmButton: false,
+    timer: 1500
+    })
+</script> 
+@endif   
+@endisset
+   
   <script type="text/javascript">
   (function(){
     $(function(){
       $('#exampleModal').modal()
     })
   }());
-   
   </script>
 @endsection

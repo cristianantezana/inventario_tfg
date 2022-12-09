@@ -51,10 +51,20 @@ Route::group(['middleware'=> ['auth']], function(){
     Route::put('personas/update/{id}',[PersonaController::class, 'update'])->name('personas.update');
     Route::get('personas/{id}/show',[PersonaController::class, 'show'])->name('personas.show');
     Route::delete('personas/destroy/{id}',[PersonaController::class, 'destroy'])->name('personas.destroy');
-});
 
+    /*Rutas Usuarios */
+    Route::get('usuarios',[UsuarioController::class, 'index'])->name('usuarios.index');
+    Route::get('usuarios/create',[UsuarioController::class, 'create'])->name('usuarios.create');
+    Route::post('usuarios/store',[UsuarioController::class, 'store'])->name('usuarios.store');
+    Route::get('usuarios/{id}/edit',[UsuarioController::class, 'edit'])->name('usuarios.edit');
+    Route::get('usuarios/persona/{id}',[UsuarioController::class, 'personaRegistrada'])->name('usuarios.persona');
+    Route::put('usuarios/update/{id}',[UsuarioController::class, 'update'])->name('usuarios.update');
+    Route::put('usuarios/updateusuario/{id}',[UsuarioController::class, 'updateusuario'])->name('usuarios.updateusuario');
+    Route::get('usuarios/{id}/show',[UsuarioController::class, 'show'])->name('usuarios.show');
+    Route::delete('usuarios/destroy/{id}',[UsuarioController::class, 'destroy'])->name('usuarios.destroy');
+    Route::post('usuarios/restaurar/{id}',[UsuarioController::class, 'restaurar'])->name('usuarios.restaurar');
 
-
+    
 
 /*Rutas Catalogos */
 Route::get('catalogos',[CatalogoController::class, 'index'])->name('catalogos.index');
@@ -178,14 +188,6 @@ Route::put('roles/update',[RolController::class, 'update'])->name('roles.update'
 Route::get('roles/{id}/show',[RolController::class, 'show'])->name('roles.show');
 Route::get('roles/{id}/destroy',[RolController::class, 'destroy'])->name('roles.destroy');
 
-/*Rutas Usuarios */
-Route::get('usuarios',[UsuarioController::class, 'index'])->name('usuarios.index');
-Route::get('usuarios/create',[UsuarioController::class, 'create'])->name('usuarios.create');
-Route::post('usuarios/store',[UsuarioController::class, 'store'])->name('usuarios.store');
-Route::get('usuarios/{id}/edit',[UsuarioController::class, 'edit'])->name('usuarios.edit');
-Route::put('usuarios/update',[UsuarioController::class, 'update'])->name('usuarios.update');
-Route::get('usuarios/{id}/show',[UsuarioController::class, 'show'])->name('usuarios.show');
-Route::get('usuarios/{id}/destroy',[UsuarioController::class, 'destroy'])->name('usuarios.destroy');
 
 /*Rutas Vehiculos */
 Route::get('vehiculos',[VehiculoController::class, 'index'])->name('vehiculos.index');
@@ -195,3 +197,6 @@ Route::get('vehiculos/{id}/edit',[VehiculoController::class, 'edit'])->name('veh
 Route::put('vehiculos/update/{id}',[VehiculoController::class, 'update'])->name('vehiculos.update');
 Route::get('vehiculos/{id}/show',[VehiculoController::class, 'show'])->name('vehiculos.show');
 Route::delete('vehiculos/destroy/{id}',[VehiculoController::class, 'destroy'])->name('vehiculos.destroy');
+});
+
+
