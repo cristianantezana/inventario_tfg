@@ -33,7 +33,7 @@
         <div id="sidebar" class="sidebar sidebar-with-footer">
           <div class="app-brand">
             <a href="#">
-              <img src="{{asset('images/46.png')}}" alt="lOGO">
+              <img src="{{asset('images/logo_angel_celeste.png')}}" alt="lOGO">
               <span class="brand-name">ANGEL S.R.L</span>
             </a>
           </div>

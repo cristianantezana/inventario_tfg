@@ -22,9 +22,21 @@
   </div>
 </div>
 <!-- Fin de Modal -->
-   <div class="slider-container">  
-    <img  class="slider-item" src="{{asset('images/logoooo.jpg')}}" alt="Slide Image"> 
-  </div>  
+<div class="card card-default">
+  
+  <div class="card-body">
+   <center>
+    <img   src="{{asset('images/lotu.jpg')}}" alt="Slide Image" style=" width: 400px;
+    height: 400px;"> 
+  
+   </center>
+     
+
+  
+
+  </div>
+</div>
+ 
 @endsection
 @section('script') 
 @isset($mensaje)
