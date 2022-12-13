@@ -55,7 +55,7 @@
                         <thead class="bg-primary">
                             <tr>
                               <th class="text-center"  style="color: #fff;" scope="col">ID</th>
-                              <th class="text-center"  style="color: #fff;" scope="col">PERMISOS</th>
+                              <th class="text-center"  style="color: #fff;" scope="col">ROLES</th>
                               <th class="text-center"  style="color: #fff;" scope="col">ACCIONES</th>
                               </tr>
                         </thead>
