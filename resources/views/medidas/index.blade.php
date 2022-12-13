@@ -83,7 +83,7 @@
               <div class="row">
                 <div class="form-group col-12">      
                   <button type="button" style="float: right; color: white; font-weight: bold;" class="btn btn-primary" 
-                  data-toggle="modal" data-target="#exampleModal">Registra medida <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
+                  data-toggle="modal" data-target="#exampleModal">Registrar medida <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-12-2022 a las 05:42:07
+-- Tiempo de generación: 13-12-2022 a las 23:13:56
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -81,7 +81,7 @@ INSERT INTO `categoria` (`cod_categoria`, `nombre_categoria`, `estado`, `created
 (29, 'bebidas', 0, '2022-11-24 19:22:33', '2022-11-28 04:12:15'),
 (30, 'lacteos', 0, '2022-11-28 01:41:17', '2022-11-28 05:40:25'),
 (31, 'soya', 0, '2022-11-28 02:17:45', '2022-11-28 02:17:50'),
-(32, 'jjj', 1, '2022-11-28 05:40:36', '2022-11-28 05:40:36');
+(32, 'jjj', 0, '2022-11-28 05:40:36', '2022-12-08 23:51:32');
 
 -- --------------------------------------------------------
 
@@ -201,7 +201,7 @@ INSERT INTO `medida` (`cod_medida`, `nombre_medida`, `sigla_medida`, `estado`, `
 (4, 'PAQUETES', 'PQ', 0, '2022-11-16 23:33:15', '2022-11-24 02:51:05'),
 (5, 'BOLSAS', 'B', 0, '2022-11-17 02:44:04', '2022-11-17 02:44:55'),
 (6, 'DEEEEED', 'D', 0, '2022-11-19 02:08:58', '2022-11-24 02:50:59'),
-(7, 'LITROS', 'LTS', 1, '2022-11-24 02:51:37', '2022-11-24 02:51:56'),
+(7, 'LITRO', 'LTS', 1, '2022-11-24 02:51:37', '2022-12-08 23:51:17'),
 (8, 'PAQUETES', 'P', 0, '2022-11-24 05:16:12', '2022-11-24 05:16:24'),
 (9, 'peque', 'p', 0, '2022-11-28 02:34:41', '2022-11-28 02:34:54');
 
@@ -225,7 +225,32 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_12_13_183937_create_permission_tables', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `model_has_permissions`
+--
+
+CREATE TABLE `model_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `model_has_roles`
+--
+
+CREATE TABLE `model_has_roles` (
+  `role_id` bigint(20) UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -260,7 +285,6 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`cod_pedido`, `cod_promotor_ped`, `cod_cliente_ped`, `nota`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'exito', 1, '2022-11-06 21:39:19', '2022-11-06 21:39:19'),
 (2, 2, 2, 'pepe', 1, '2022-11-06 21:39:37', '2022-11-06 21:39:37'),
 (3, 2, 1, 'siiii', 1, '2022-11-06 23:14:42', '2022-11-06 23:14:42');
 
@@ -280,6 +304,27 @@ CREATE TABLE `pedido_catalogo` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(3, 'Categoriaindex', 'web', '2022-12-14 01:55:09', '2022-12-14 01:55:09');
 
 -- --------------------------------------------------------
 
@@ -304,8 +349,8 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`cod_persona`, `nombre`, `apellido`, `celular`, `celular_2`, `direccion`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Cristian', 'Antezana Novillo', '785055808', '76085872', 'AV.paitit', 1, '2022-11-05 02:24:01', '2022-11-27 18:58:22'),
-(2, 'Mateo3s', 'Flores Perez', '7601468', '7854216', 'warnes', 1, '2022-11-06 04:56:55', '2022-11-22 01:54:51'),
+(1, 'Cristian', 'Antezana Novillo', '78505580', '76085872', 'AV.paitit', 1, '2022-11-05 02:24:01', '2022-12-09 01:30:43'),
+(2, 'Mateo3s', 'Flores Perez', '69000000', '7854216', 'warnes', 1, '2022-11-06 04:56:55', '2022-12-09 03:21:40'),
 (3, 'Maria soli', 'Guillermina', '78541364', '78954312', 'Santa Cruz', 1, '2022-11-06 04:57:38', '2022-11-24 05:17:27'),
 (4, 'Antonio PERZ', 'Perez', '6521812', '1354896', 'santa cruz', 1, '2022-11-06 19:59:22', '2022-11-11 20:41:18'),
 (5, 'Nicolas', 'Madero', '6521812', '1354896', 'santa cruz', 1, '2022-11-06 20:00:50', '2022-11-27 07:42:58'),
@@ -318,7 +363,7 @@ INSERT INTO `persona` (`cod_persona`, `nombre`, `apellido`, `celular`, `celular_
 (12, 'Jose Luis', 'toreto', '78466131', '7964631', 'recreo', 1, '2022-11-11 03:25:19', '2022-11-11 20:29:44'),
 (13, 'Jasminippp', 'perez cabrera', '796541213', '86464898', 'lolasds', 1, '2022-11-11 22:51:09', '2022-11-11 22:51:40'),
 (14, 'FEDRICO', 'PEREZ', '79654128', '68126852', 'POPO', 1, '2022-11-12 00:02:50', '2022-11-17 02:00:45'),
-(15, 'asdsad', 'dsadas', '54545', '454', 'fggtgt', 1, '2022-11-16 04:49:19', '2022-11-16 04:49:36'),
+(15, 'asdsad', 'dsadas', '54545', '454', 'fggtgt', 0, '2022-11-16 04:49:19', '2022-12-13 01:48:21'),
 (16, 'abigail', 'flores', '79622041', '6985412', '4to anillo', 1, '2022-11-17 02:04:51', '2022-11-18 06:22:05'),
 (17, 'jose', 'añez', '7455', '5454', 'av', 1, '2022-11-17 05:12:49', '2022-11-18 06:21:51'),
 (18, 'Cristian', 'Fernandez', '6954821', '6985412', 'av.pirai', 1, '2022-11-19 18:03:51', '2022-11-27 07:42:50'),
@@ -327,7 +372,8 @@ INSERT INTO `persona` (`cod_persona`, `nombre`, `apellido`, `celular`, `celular_
 (21, 'Pedro', 'Martinez Soliz', '7859601', '6958131', 'av.popop', 1, '2022-11-20 02:54:19', '2022-11-22 02:11:41'),
 (23, 'Gerardo', 'Tapia Soliz', '6985412', '78205821', 'AV.Cañoto', 1, '2022-11-24 00:38:20', '2022-11-24 02:07:36'),
 (24, 'Maurici', 'Soliz', '69000000', '6564584', 'AV.Cañoto', 1, '2022-11-24 05:12:22', '2022-12-07 04:08:14'),
-(25, 'MARCOS', 'SUAREZ', '6858461', '68451', 'av.paurito', 0, '2022-11-24 05:14:18', '2022-12-07 04:08:23');
+(25, 'MARCOS', 'SUAREZ', '6858461', '68451', 'av.paurito', 0, '2022-11-24 05:14:18', '2022-12-07 04:08:23'),
+(26, 'Mateo', 'Soliz Martinez', '69000001', '69000000', 'av_soliz', 1, '2022-12-09 03:08:30', '2022-12-09 03:08:30');
 
 -- --------------------------------------------------------
 
@@ -458,7 +504,6 @@ CREATE TABLE `promotor` (
 --
 
 INSERT INTO `promotor` (`cod_promotor`, `cod_usuario_pro`, `cod_vehiculo_pro`, `comision`, `fecha_ingreso`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '200.00', '2022-10-04', 1, '2022-11-06 20:18:26', '2022-11-06 20:18:26'),
 (2, 2, 4, '600.00', '0000-00-00', 1, '2022-11-06 20:18:42', '2022-11-06 20:18:42');
 
 -- --------------------------------------------------------
@@ -510,8 +555,39 @@ CREATE TABLE `rol` (
 
 INSERT INTO `rol` (`cod_rol`, `nombre_rol`, `estado`, `created_at`, `updated_At`) VALUES
 (1, 'almacenero', 1, '2022-11-06 03:25:50', '2022-11-06 03:25:50'),
-(2, 'cliente', 1, '2022-11-06 03:26:02', '2022-11-06 03:26:02'),
 (3, 'Administrador', 1, '2022-11-06 20:12:15', '2022-11-06 20:12:15');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `guard_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(3, 'Jefe de almacén', 'web', '2022-12-14 02:13:06', '2022-12-14 02:13:06');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role_has_permissions`
+--
+
+CREATE TABLE `role_has_permissions` (
+  `permission_id` bigint(20) UNSIGNED NOT NULL,
+  `role_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -521,8 +597,8 @@ INSERT INTO `rol` (`cod_rol`, `nombre_rol`, `estado`, `created_at`, `updated_At`
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `cod_persona` int(11) DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cod_persona_users` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -536,8 +612,11 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `cod_persona`, `name`, `email`, `email_verified_at`, `password`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'cristian', 'cristian1997@gmail.com', NULL, '$2y$10$xJwwsNhPr2YGsAyvUw/m0e7/GpAg8L1piedD1HRpGR504sBSyKo2.', 1, NULL, '2022-12-08 03:35:31', '2022-12-08 03:35:31');
+INSERT INTO `users` (`id`, `cod_persona_users`, `name`, `email`, `email_verified_at`, `password`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 1, 'cristian', 'cristian1997@gmail.com', NULL, '$2y$10$xJwwsNhPr2YGsAyvUw/m0e7/GpAg8L1piedD1HRpGR504sBSyKo2.', 1, NULL, '2022-12-08 03:35:31', '2022-12-13 01:46:15'),
+(2, NULL, NULL, 'marcs@gmail.com', NULL, '$2y$10$d4jRE6tMqN2KREkR6Ib.7eJyCstAI8rHwaWwfzSZk5PFOITlA./m.', 0, NULL, '2022-12-09 02:26:36', '2022-12-09 03:30:25'),
+(3, 19, NULL, 'matis@gmail.com', NULL, '$2y$10$xPxY6V/i.jcmUTIgqjWbWO0.mIMTL.1lHU7hKaXg12E/zvXjcCnzm', 1, NULL, '2022-12-09 02:27:59', '2022-12-09 03:23:07'),
+(4, 2, NULL, 'mateo@gmail.com', NULL, '$2y$10$Qv4RJp5Cyr.h.2b3HaOvQ.4Qh.gpX4Wq.i7tx83SVmGkGw3eGW7RO', 1, NULL, '2022-12-13 02:52:33', '2022-12-13 02:52:33');
 
 -- --------------------------------------------------------
 
@@ -561,9 +640,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`cod_usuario`, `cod_persona_usu`, `cod_rol_usu`, `password`, `correo`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, '123456', 'cristian30@gmail.com', 1, '2022-11-06 03:27:32', '2022-11-06 03:27:32'),
-(2, 4, 1, '123456', 'antonio@gmail.com', 1, '2022-11-06 20:10:42', '2022-11-06 20:10:42'),
-(3, 9, 2, '12345678', 'marcos@gamil.com', 1, '2022-11-06 20:11:31', '2022-11-06 20:11:31');
+(2, 4, 1, '123456', 'antonio@gmail.com', 1, '2022-11-06 20:10:42', '2022-11-06 20:10:42');
 
 -- --------------------------------------------------------
 
@@ -653,6 +730,20 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
+-- Indices de la tabla `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
+  ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
+
+--
 -- Indices de la tabla `password_resets`
 --
 ALTER TABLE `password_resets`
@@ -673,6 +764,13 @@ ALTER TABLE `pedido_catalogo`
   ADD PRIMARY KEY (`cod_pedido_catalogo`),
   ADD KEY `cod_pedido_pcata` (`cod_pedido_pcata`),
   ADD KEY `cod_catalogo_pcata` (`cod_catalogo_pcata`);
+
+--
+-- Indices de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
 -- Indices de la tabla `persona`
@@ -729,6 +827,20 @@ ALTER TABLE `proveedor`
 --
 ALTER TABLE `rol`
   ADD PRIMARY KEY (`cod_rol`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
+
+--
+-- Indices de la tabla `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD PRIMARY KEY (`permission_id`,`role_id`),
+  ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
 -- Indices de la tabla `users`
@@ -801,7 +913,7 @@ ALTER TABLE `medida`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `pedido`
@@ -816,10 +928,16 @@ ALTER TABLE `pedido_catalogo`
   MODIFY `cod_pedido_catalogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -864,10 +982,16 @@ ALTER TABLE `rol`
   MODIFY `cod_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -912,6 +1036,18 @@ ALTER TABLE `devolucion`
   ADD CONSTRAINT `devolucion_ibfk_1` FOREIGN KEY (`cod_pedido_devo`) REFERENCES `pedido` (`cod_pedido`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Filtros para la tabla `model_has_permissions`
+--
+ALTER TABLE `model_has_permissions`
+  ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `model_has_roles`
+--
+ALTER TABLE `model_has_roles`
+  ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
+
+--
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
@@ -950,6 +1086,13 @@ ALTER TABLE `promotor`
 --
 ALTER TABLE `proveedor`
   ADD CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`cod_persona_prove`) REFERENCES `persona` (`cod_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `role_has_permissions`
+--
+ALTER TABLE `role_has_permissions`
+  ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `role_has_permissions_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`

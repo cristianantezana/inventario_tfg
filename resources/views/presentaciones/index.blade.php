@@ -172,7 +172,7 @@
   <script type="text/javascript">
     let tabla = 'table';
     let clase = 'eliminarPresentacion';
-    let mensaje = "De elimnar a esta Presentacion!";
+    let mensaje = "De elimnar a esta Presentación!";
     tableEs(tabla);
     eliminarPorRuta(mensaje,clase);
   </script>

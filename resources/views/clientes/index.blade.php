@@ -96,7 +96,7 @@
                                                 </div>
                                                 <div class="form-group col-3"> 
                                                     <label for="nit">Nit</label>
-                                                    <input type="number" min="100000000000" max="99999999999"  value="{{$cliente->nit}}" class="form-control" id="nit" name="nit"  required>
+                                                    <input type="number" min="1000000000" max="99999999999"  value="{{$cliente->nit}}" class="form-control" id="nit" name="nit"  required>
                                                 </div>
                                                 <div class="form-group col-3"> 
                                                     <label for="razon_social">Razon Social</label>

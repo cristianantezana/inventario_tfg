@@ -9,9 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Persona;
 
+use Spatie\Permission\Traits\HasRoles;
+
 class User extends Authenticatable
 {
-  use HasApiTokens, HasFactory, Notifiable;
+    use HasRoles;
+    use HasApiTokens,HasFactory, Notifiable;
+ 
   protected $fillable = [
       'name',
       'cod_persona_users',

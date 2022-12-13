@@ -19,6 +19,7 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\PermisoController;
 use App\Models\Cliente;
 use App\Models\Usuario;
 
@@ -96,7 +97,14 @@ Route::put('clientes/update/{id}',[ClienteController::class, 'update'])->name('c
 Route::get('clientes/{id}/show',[ClienteController::class, 'show'])->name('clientes.show');
 Route::delete('clientes/destroy/{id}',[ClienteController::class, 'destroy'])->name('clientes.destroy');
 
+/*Rutas permisos */
+Route::get('permisos',[PermisoController::class, 'index'])->name('permisos.index');
+Route::post('permisos/store',[PermisoController::class, 'store'])->name('permisos.store');
+Route::post('permisos/personas/store',[PermisoController::class, 'personaStore'])->name('permisos.personas.store');
+Route::put('permisos/update/{id}',[PermisoController::class, 'update'])->name('permisos.update');
+Route::delete('permisos/destroy/{id}',[PermisoController::class, 'destroy'])->name('permisos.destroy');
 /*Rutas Compras */
+
 Route::get('compras',[CompraController::class, 'index'])->name('compras.index');
 Route::get('compras/create',[CompraController::class, 'create'])->name('compras.create');
 Route::post('compras/store',[CompraController::class, 'store'])->name('compras.store');
@@ -184,9 +192,11 @@ Route::get('roles',[RolController::class, 'index'])->name('roles.index');
 Route::get('roles/create',[RolController::class, 'create'])->name('roles.create');
 Route::post('roles/store',[RolController::class, 'store'])->name('roles.store');
 Route::get('roles/{id}/edit',[RolController::class, 'edit'])->name('roles.edit');
-Route::put('roles/update',[RolController::class, 'update'])->name('roles.update');
+
+Route::put('roles/update/{id}',[RolController::class, 'update'])->name('roles.update');
 Route::get('roles/{id}/show',[RolController::class, 'show'])->name('roles.show');
-Route::get('roles/{id}/destroy',[RolController::class, 'destroy'])->name('roles.destroy');
+Route::delete('roles/destroy/{id}',[RolController::class, 'destroy'])->name('roles.destroy');
+
 
 
 /*Rutas Vehiculos */

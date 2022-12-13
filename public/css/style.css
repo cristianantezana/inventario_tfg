@@ -2607,12 +2607,12 @@ fieldset:disabled a.btn {
 .btn-primary:hover {
   color: #ffffff;
   background-color: #1a6abf;
-  border-color: #8243d7;
+  border-color: #1a6abf;
 }
 .btn-primary:focus, .btn-primary.focus {
   color: #ffffff;
   background-color: #1a6abf;
-  border-color: #8243d7;
+  border-color: #1a6abf;
   box-shadow: 0 0 0 0.2rem rgba(173, 131, 229, 0.5);
 }
 .btn-primary.disabled, .btn-primary:disabled {
@@ -2622,8 +2622,8 @@ fieldset:disabled a.btn {
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
   color: #ffffff;
-  background-color: #8243d7;
-  border-color: #7b38d5;
+  background-color: #1a6abf;
+  border-color: #1a6abf;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(173, 131, 229, 0.5);
@@ -4599,7 +4599,7 @@ input[type=button].btn-block {
   color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(255, 255, 255);
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
@@ -5040,7 +5040,7 @@ a.badge:hover, a.badge:focus {
 }
 a.badge-primary:hover, a.badge-primary:focus {
   color: #ffffff;
-  background-color: #8243d7;
+  background-color: #1a6abf;
 }
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
@@ -6544,7 +6544,7 @@ a.close.disabled {
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #8243d7 !important;
+  background-color: #1a6abf !important;
 }
 
 .bg-secondary {
@@ -12502,7 +12502,7 @@ code {
 .navbar .sidebar-toggle {
   background-color: transparent;
   background-image: none;
-  color: #2f2f2f;
+  color: #fff;
   font-size: 2rem;
   padding: 0 1rem;
   border: 0px;
@@ -12924,7 +12924,8 @@ code {
   border-color: #e5e9f2;
 }
 .navbar.navbar-light .navbar-right .navbar-nav .user-menu .dropdown-toggle > span {
-  color: #31343d;
+  color: #fff;
+  
 }
 @media (min-width: 1200px) {
   .navbar.navbar-light .search-form .input-group {
@@ -13451,10 +13452,10 @@ label {
   font-size: 1rem;
 }
 .nav-settings .nav-link.active {
-  color: #8243d7;
+  color: #1a6abf;
 }
 .nav-settings .nav-link:hover {
-  color: #8243d7;
+  color: #1a6abf;
 }
 
 /*===== SIDEBAR NAVIGATION =====*/
@@ -13516,7 +13517,7 @@ label {
 .sidebar .sidebar-inner > li > a {
   padding: 1rem 1.5rem;
   line-height: 20px;
-  color: #bfc7d9;
+  color: #ffffff;
   display: block;
   text-decoration: none;
   text-transform: capitalize;
@@ -13529,14 +13530,14 @@ label {
   position: relative;
   z-index: 10;
   color: #ffffff;
-  background-color: rgba(158, 109, 224, 0.4);
+  background-color: rgba(137, 169, 219, 0.37);
 }
 .sidebar .sidebar-inner .section-title {
   padding: 1.25rem 1.56rem 1rem;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.75rem;
-  color: rgba(191, 199, 217, 0.7);
+  color: rgb(255, 255, 255);
   letter-spacing: 1.2px;
   white-space: nowrap;
 }
@@ -13662,7 +13663,7 @@ label {
   position: relative;
   font-size: 0.9375rem;
   white-space: nowrap;
-  color: #bfc7d9;
+  color: #ffffff;
 }
 .sidebar .sub-menu > li .sub-menu {
   padding-left: 2.18rem;

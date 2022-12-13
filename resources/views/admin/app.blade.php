@@ -24,17 +24,17 @@
     <!-- MONO CSS -->
     <link id="main-css-href" rel="stylesheet" href="{{asset('css/style.css')}}" />
     <!-- FAVICON -->
-    <link href="{{asset('images/46.png')}}" rel="shortcut icon" />
+    <link href="{{asset('images/logo_angel_celeste.png')}}" rel="shortcut icon" />
     <script src="{{asset('plugins/nprogress/nprogress.js')}}"></script>
   </head>
   <body class="navbar-fixed sidebar-fixed" id="body">
     <div class="wrapper">
       <aside class="left-sidebar sidebar-dark" id="left-sidebar">
-        <div id="sidebar" class="sidebar sidebar-with-footer">
+        <div id="sidebar" style="background-color: #1a6abf;" class="sidebar sidebar-with-footer">
           <div class="app-brand">
             <a href="#">
-              <img src="{{asset('images/logo_angel_celeste.png')}}" alt="lOGO">
-              <span class="brand-name">ANGEL S.R.L</span>
+              <img src="{{asset('images/logo_angel_celeste.png')}}" style="border-radius: 5px;" alt="lOGO">
+              <span class="brand-name" style="font-style: italic;">ÁNGEL S.R.L</span>
             </a>
           </div>
           <div class="sidebar-left" data-simplebar style="height: 100%;">
@@ -75,6 +75,16 @@
                     <li>
                       <a class="sidenav-item-link" href="{{route('usuarios.index')}}">
                         <span class="nav-text">Usuarios</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{route('roles.index')}}">
+                        <span class="nav-text">Roles</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="sidenav-item-link" href="{{route('permisos.index')}}">
+                        <span class="nav-text">Permisos</span>
                       </a>
                     </li>
                   </div>

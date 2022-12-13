@@ -92,7 +92,7 @@
                         <div class="form-group">
                             <label for="nombre">Nombre<span class="required">*</span></label>
                             <input @if(session('persona'))value="{{ session('persona.nombre')}} {{ session('persona.apellido')}}"@endif 
-                            type="text" class="form-control"  name="nombre" required="required" required readonly placeholder="Nombre cliente..">
+                            type="text" class="form-control" id="nombre_2" name="nombre" required="required" required readonly placeholder="Nombre usuario">
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -147,7 +147,7 @@
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="submit" class="btn btn-primary guardar">Guardar</button>
                       <a class="btn btn-danger" href="{{route('usuarios.index')}}">Volver</a>
                     </div>
                   </form>
@@ -173,6 +173,17 @@
     </script>    
   @endif
   <script type="text/javascript">
+    $(document).on('click', '.guardar', function(e){
+        let campo = $("#nombre_2").val();
+        if(campo == ''){
+          e.preventDefault();
+          Swal.fire(
+            'Complete los campos',
+            'Complete todos los campos de la persona?',
+            'question'
+          )
+        }
+      });
     $(document).ready(function(){                  
       let consulta;
       $("#busqueda_persona").focus();

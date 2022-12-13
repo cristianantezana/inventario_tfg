@@ -12,7 +12,7 @@
       </div>
           <div class="modal-body">
             <center>
-              <p><b>Bienvenido a la distribuidora Angel S.R.L.</b><br>Productos de calidad y mejor precio</p>
+              <p><b>Bienvenido a la distribuidora Ángel S.R.L.</b><br>Productos de calidad y mejor precio</p>
             </center>     
           </div>>
           <div class="modal-footer">
