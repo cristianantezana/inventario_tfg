@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-12-2022 a las 23:13:56
+-- Tiempo de generación: 16-12-2022 a las 00:55:31
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -111,7 +111,8 @@ INSERT INTO `cliente` (`cod_cliente`, `cod_persona_cli`, `nit`, `razon_social`, 
 (5, 9, '481354', 'AV.PEREZ', 1, '2022-11-24 06:14:00', '2022-11-24 06:14:00'),
 (6, 9, '123456789012', 'gsffsadsadsa', 1, '2022-12-07 04:39:08', '2022-12-07 04:39:08'),
 (7, 9, '123456789012', 'gsffsadsadsa', 1, '2022-12-07 04:40:11', '2022-12-07 04:40:11'),
-(8, 1, '123456789011', 'fera', 1, '2022-12-07 04:43:19', '2022-12-07 04:43:19');
+(8, 1, '123456789011', 'fera', 1, '2022-12-07 04:43:19', '2022-12-07 04:43:19'),
+(9, 21, '1234567890', 'dddd', 1, '2022-12-15 06:30:09', '2022-12-15 06:30:09');
 
 -- --------------------------------------------------------
 
@@ -203,7 +204,10 @@ INSERT INTO `medida` (`cod_medida`, `nombre_medida`, `sigla_medida`, `estado`, `
 (6, 'DEEEEED', 'D', 0, '2022-11-19 02:08:58', '2022-11-24 02:50:59'),
 (7, 'LITRO', 'LTS', 1, '2022-11-24 02:51:37', '2022-12-08 23:51:17'),
 (8, 'PAQUETES', 'P', 0, '2022-11-24 05:16:12', '2022-11-24 05:16:24'),
-(9, 'peque', 'p', 0, '2022-11-28 02:34:41', '2022-11-28 02:34:54');
+(9, 'peque', 'p', 0, '2022-11-28 02:34:41', '2022-11-28 02:34:54'),
+(10, 'METRO', 'MT', 0, '2022-12-15 06:31:23', '2022-12-15 06:35:12'),
+(11, 'DDD', 'D', 0, '2022-12-15 06:32:15', '2022-12-15 06:35:09'),
+(12, 'MMM', 'M', 0, '2022-12-15 06:35:19', '2022-12-15 06:35:24');
 
 -- --------------------------------------------------------
 
@@ -251,6 +255,16 @@ CREATE TABLE `model_has_roles` (
   `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(4, 'App\\Models\\User', 1),
+(4, 'App\\Models\\User', 8),
+(5, 'App\\Models\\User', 5),
+(5, 'App\\Models\\User', 6);
 
 -- --------------------------------------------------------
 
@@ -324,7 +338,11 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(3, 'Categoriaindex', 'web', '2022-12-14 01:55:09', '2022-12-14 01:55:09');
+(3, 'Categoriaindex', 'web', '2022-12-14 01:55:09', '2022-12-14 01:55:09'),
+(4, 'Productoscreate', 'web', '2022-12-15 22:17:10', '2022-12-15 22:17:10'),
+(5, 'Personaindex', 'web', '2022-12-15 22:17:36', '2022-12-16 03:38:45'),
+(7, 'Vehiculosindex', 'web', '2022-12-16 03:41:35', '2022-12-16 03:41:35'),
+(8, 'ModuloProductos', 'web', '2022-12-16 03:42:47', '2022-12-16 03:42:47');
 
 -- --------------------------------------------------------
 
@@ -373,7 +391,9 @@ INSERT INTO `persona` (`cod_persona`, `nombre`, `apellido`, `celular`, `celular_
 (23, 'Gerardo', 'Tapia Soliz', '6985412', '78205821', 'AV.Cañoto', 1, '2022-11-24 00:38:20', '2022-11-24 02:07:36'),
 (24, 'Maurici', 'Soliz', '69000000', '6564584', 'AV.Cañoto', 1, '2022-11-24 05:12:22', '2022-12-07 04:08:14'),
 (25, 'MARCOS', 'SUAREZ', '6858461', '68451', 'av.paurito', 0, '2022-11-24 05:14:18', '2022-12-07 04:08:23'),
-(26, 'Mateo', 'Soliz Martinez', '69000001', '69000000', 'av_soliz', 1, '2022-12-09 03:08:30', '2022-12-09 03:08:30');
+(26, 'Mateo', 'Soliz Martinez', '69000001', '69000000', 'av_soliz', 1, '2022-12-09 03:08:30', '2022-12-09 03:08:30'),
+(27, 'Pedro', 'Martinez', '76085872', '69026026', 'Paititi', 1, '2022-12-15 06:24:20', '2022-12-15 06:24:20'),
+(28, 'Joselito', 'Vaca', '73123148', '78505580', 'PERAFLORES', 1, '2022-12-15 06:46:34', '2022-12-15 06:46:34');
 
 -- --------------------------------------------------------
 
@@ -576,7 +596,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(3, 'Jefe de almacén', 'web', '2022-12-14 02:13:06', '2022-12-14 02:13:06');
+(4, 'Administrador', 'web', '2022-12-15 04:18:17', '2022-12-15 04:18:17'),
+(5, 'Promotor', 'web', '2022-12-15 04:18:32', '2022-12-15 04:18:32'),
+(10, 'Jefe de almacén', 'web', '2022-12-16 02:52:22', '2022-12-16 02:52:22');
 
 -- --------------------------------------------------------
 
@@ -588,6 +610,20 @@ CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(3, 5),
+(3, 10),
+(4, 4),
+(5, 4),
+(5, 5),
+(5, 10),
+(7, 4),
+(8, 4);
 
 -- --------------------------------------------------------
 
@@ -614,9 +650,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `cod_persona_users`, `name`, `email`, `email_verified_at`, `password`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 1, 'cristian', 'cristian1997@gmail.com', NULL, '$2y$10$xJwwsNhPr2YGsAyvUw/m0e7/GpAg8L1piedD1HRpGR504sBSyKo2.', 1, NULL, '2022-12-08 03:35:31', '2022-12-13 01:46:15'),
-(2, NULL, NULL, 'marcs@gmail.com', NULL, '$2y$10$d4jRE6tMqN2KREkR6Ib.7eJyCstAI8rHwaWwfzSZk5PFOITlA./m.', 0, NULL, '2022-12-09 02:26:36', '2022-12-09 03:30:25'),
 (3, 19, NULL, 'matis@gmail.com', NULL, '$2y$10$xPxY6V/i.jcmUTIgqjWbWO0.mIMTL.1lHU7hKaXg12E/zvXjcCnzm', 1, NULL, '2022-12-09 02:27:59', '2022-12-09 03:23:07'),
-(4, 2, NULL, 'mateo@gmail.com', NULL, '$2y$10$Qv4RJp5Cyr.h.2b3HaOvQ.4Qh.gpX4Wq.i7tx83SVmGkGw3eGW7RO', 1, NULL, '2022-12-13 02:52:33', '2022-12-13 02:52:33');
+(4, 2, NULL, 'mateo@gmail.com', NULL, '$2y$10$Qv4RJp5Cyr.h.2b3HaOvQ.4Qh.gpX4Wq.i7tx83SVmGkGw3eGW7RO', 1, NULL, '2022-12-13 02:52:33', '2022-12-13 02:52:33'),
+(5, 27, NULL, 'pedro@gamil.com', NULL, '$2y$10$RlXDLqrl4FZnXTn9OC0cMeM9jqLxmfoshm3AQwkBKOfsvnGu5XaJO', 1, NULL, '2022-12-15 06:25:10', '2022-12-15 06:25:10'),
+(6, 21, NULL, 'pepe@gmail.com', NULL, '$2y$10$HNSvkuRXV1FtUzsSeg8iUuzyoXxjPjsf5Rle19BAl4iSMyYuiBGGi', 1, NULL, '2022-12-15 06:26:13', '2022-12-15 06:26:13'),
+(7, 28, NULL, 'JOSE@gmail.com', NULL, '$2y$10$Mw1RhXIZHuuJSqojv2pv1.pFINwBWmCN0xoT.aPXwsG3gC.EtAR7e', 1, NULL, '2022-12-15 06:47:14', '2022-12-15 06:47:14'),
+(8, 10, NULL, 'pachu123@gmail.com', NULL, '$2y$10$TtZ.HDToAVxHlaZtT1k/Q.J/Vx6zmvYRBM0pAztVZSQMkThDZqnCi', 1, NULL, '2022-12-16 03:11:08', '2022-12-16 03:11:08');
 
 -- --------------------------------------------------------
 
@@ -883,7 +922,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `compra`
@@ -907,7 +946,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `medida`
 --
 ALTER TABLE `medida`
-  MODIFY `cod_medida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cod_medida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -931,13 +970,13 @@ ALTER TABLE `pedido_catalogo`
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -985,13 +1024,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
