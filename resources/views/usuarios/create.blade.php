@@ -97,22 +97,6 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
-                          <label for="celular">Celular<span class="required">*</span></label>
-                            <input type="number"  @if(session('persona')) value="{{ session('persona.celular') }}"@endif 
-                              class="form-control" name="celular" placeholder="Celular" readonly required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="direccion">Direccion<span class="required">*</span></label>
-                          <input @if(session('persona')) value="{{ session('persona.direccion')}}" @endif 
-                          type="text" class="form-control " name="direccion" placeholder="Dirección" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
                           <label for="nit">Correo<span class="required">*</span></label>
                           <input type="email" name="email" :value="old('email')" required class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Correo" >
                           <div class="invalid-feedback">
@@ -120,7 +104,7 @@
                         </div>
                         </div>
                       </div>
-                    </div>
+                    </div>                 
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
@@ -146,6 +130,34 @@
                         </div>
                       </div>
                     </div>
+                    <label for="nit">Roles<span class="required">*</span></label>
+                    <div class="row">
+                      @foreach ($roles as $id => $role)
+                      <div class="col-md-3">
+                        
+                        <div class="border border-top-0 rounded table-responsive email-list">
+                          <table class="table mb-0 table-email">
+                            <tbody>
+                              <tr class="unread">
+                                <td class="mark-mail">
+                                  <label class="control control-checkbox mb-0">
+                                    <input type="checkbox"  type="checkbox" name="roles[]"
+                                    value="{{ $id }}" />
+                                    <div class="control-indicator"></div>
+                                  </label>
+                                 <b>{{ $role }}</b> 
+                                </td>  
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                      @endforeach
+                      
+                       
+                      </div>
+                      
+                   <br>
                     <div class="col-md-6">
                       <button type="submit" class="btn btn-primary guardar">Guardar</button>
                       <a class="btn btn-danger" href="{{route('usuarios.index')}}">Volver</a>
@@ -184,7 +196,8 @@
           )
         }
       });
-    $(document).ready(function(){                  
+    $(document).ready(function(){  
+      $('.select2').select2();                
       let consulta;
       $("#busqueda_persona").focus();
       $("#busqueda_persona").keyup(function(e){

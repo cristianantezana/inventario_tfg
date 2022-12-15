@@ -8,10 +8,12 @@
     <!-- theme meta -->
     <meta name="theme-name" content="mono" />
     <!-- GOOGLE FONTS -->
+    
     <link href="{{asset('https://fonts.googleapis.com/css?family=Karla:400,700|Roboto')}}" rel="stylesheet">
     <link href="{{asset('plugins/material/css/materialdesignicons.min.css')}}" rel="stylesheet" />
     <link href="{{asset('plugins/simplebar/simplebar.css')}}" rel="stylesheet" />
     <!-- PLUGINS CSS STYLE -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('plugins/sweetalert2/dist/sweetalert2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('icon/themify-icons/themify-icons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('icon/font-awesome/css/font-awesome.min.css')}}">
@@ -19,6 +21,7 @@
     <link href="{{asset('plugins/DataTables/DataTables-1.10.18/css/jquery.dataTables.min.css')}}" rel="stylesheet" />
     <link href="{{asset('plugins/jvectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" />
     <link href="{{asset('plugins/daterangepicker/daterangepicker.css')}}" rel="stylesheet" />
+    <link href="{{asset('plugins/select2/select2-bootstrap.css')}}" rel="stylesheet" />
     <link href="{{asset('https://cdn.quilljs.com/1.3.6/quill.snow.css')}}" rel="stylesheet">
     <link href="{{asset('plugins/toaster/toastr.min.css')}}" rel="stylesheet" />
     <!-- MONO CSS -->
@@ -57,11 +60,18 @@
                 </a>
                 <ul class="collapse" id="email" data-parent="#sidebar-menu">
                   <div class="sub-menu">
+                    
+                   
+                
+                
+                
+                    @can('Personaindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('personas.index')}}">
                         <span class="nav-text">Personas</span>
                       </a>
                     </li>
+                    @endcan
                     <li >
                       <a class="sidenav-item-link" href="{{route('clientes.index')}}">
                         <span class="nav-text">Clientes</span>
@@ -90,6 +100,7 @@
                   </div>
                 </ul>
               </li> 
+              @can('ModuloProductos')
               <li  class="has-sub" >
                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#charts"
                   aria-expanded="false" aria-controls="charts">
@@ -99,11 +110,14 @@
                 <ul  class="collapse"  id="charts"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
+                    @can('Categoriaindex')
                     <li >
                       <a class="sidenav-item-link" href="{{route('categorias.index')}}">
                         <span class="nav-text">Categorias</span>
                       </a>
                     </li>
+                @endcan
+                    
                     <li >
                       <a class="sidenav-item-link" href="{{route('medidas.index')}}">
                         <span class="nav-text">Medidas</span>
@@ -114,21 +128,26 @@
                         <span class="nav-text">Presentaciones</span>
                       </a>
                     </li>
+                    @can('Productoscreate')
                     <li >
                       <a class="sidenav-item-link" href="{{route('productos.index')}}">
                         <span class="nav-text">Productos</span>
                       </a>
                     </li>
+                    @endcan
+                    
                   </div>
                 </ul>
               </li>
+              @endcan
               <li  class="has-sub" >
                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#vehiculos"
                   aria-expanded="false" aria-controls="vehiculos">
                   <i class="fa fa-car" aria-hidden="true"></i>
                   <span class="nav-text">Vehiculos</span> <b class="caret"></b>
                 </a>
-                <ul  class="collapse"  id="vehiculos"
+                @can('Vehiculosindex')
+                  <ul  class="collapse"  id="vehiculos"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                     <li >
@@ -138,6 +157,8 @@
                     </li>
                   </div>
                 </ul>
+                @endcan
+                
               </li> 
             </ul>
           </div>
@@ -193,12 +214,15 @@
       var d = new Date();
       var year = d.getFullYear();
       document.getElementById("copy-year").innerHTML = year;
+      
     </script>
+
     <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('plugins/simplebar/simplebar.min.js')}}"></script>
     <script src="{{asset('https://unpkg.com/hotkeys-js/dist/hotkeys.min.js')}}"></script>
     <script src="{{asset('plugins/apexcharts/apexcharts.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> 
     <script src="{{asset('plugins/DataTables/DataTables-1.10.18/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('plugins/jvectormap/jquery-jvectormap-2.0.3.min.js')}}"></script>
     <script src="{{asset('plugins/jvectormap/jquery-jvectormap-world-mill.js')}}"></script>

@@ -22,7 +22,7 @@
             <div class="row">
               <div class="form-group col-6"> 
                 <label for="categoria_id">Seleccione la categoria<span class="required">*</span></label>
-                <select name="categoria_id" class="form-control selectric">
+                <select name="categoria_id" class="form-control selectric select2" id="select2">
                     @foreach($categorias as $item)
                       <option value="{{$item->cod_categoria}}">{{$item->nombre_categoria}}</option>
                     @endforeach
@@ -30,7 +30,7 @@
               </div>
               <div class="form-group col-6"> 
                 <label for="presentacion_id">Seleccione la presentación<span class="required">*</span></label>
-                <select name="presentacion_id" class="form-control selectric">
+                <select name="presentacion_id" class="form-control selectric select2"  >
                     @foreach($presentacion as $item)
                       <option value="{{$item->cod_presentacion}}">{{$item->medida->nombre_medida.'- '.$item->nombre_presentacion}}</option>
                     @endforeach
@@ -64,6 +64,7 @@
                   </button>
                 </div>
               </div>
+              
             <div class="card-block table-border-style">
               <div class="table-responsive"> 
                 <table class="table table-bordered table-striped table-hover" id="table">
@@ -191,6 +192,11 @@
     let clase = 'eliminarProducto';
     let mensaje = "De elimnar a este Producto!";
     eliminarPorRuta(mensaje,clase);
+    $('.select2').select2({ 
+
+      width: '100%',
+        dropdownParent: $('#exampleModal')
+    });
   </script>
 @endsection
       

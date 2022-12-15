@@ -28,6 +28,7 @@
                         <th class="text-center" style="color: #fff;">CELULAR</th>
                         <th class="text-center" style="color: #fff;">DIRECCCION</th>
                         <th class="text-center" style="color: #fff;">CORREO</th>
+                        <th class="text-center" style="color: #fff;">Rol</th>
                         <th class="text-center" style="color: #fff;">ACCIONES</th>
                     </thead>
                     <tbody>
@@ -40,10 +41,17 @@
                                 <td class="text-center">{{$cliente->persona->celular}}</td>
                                 <td class="text-center">{{$cliente->persona->direccion}}</td>
                                 <td class="text-center">{{$cliente->email}}</td>
+                                <td class="text-center">
+                                  @forelse ($cliente->roles as $item)
+                                      <span class="badge badge-info">{{$item->name}}</span>
+                                  @empty
+                                      <span class="badge badge-danger">Sin roles</span>
+                                  @endforelse
+                                </td>
                                 <td>
                                     <center>
-                                        <a href="#"  data-toggle="modal"
-                                        data-target="#editarCliente{{$cliente->id}}" class="btn btn-warning btn-sm mx-2 editar" ><i class="fa fa-pencil "></i>
+                                        <a href="{{ route('usuarios.edit', $cliente->id) }}" 
+                                         class="btn btn-warning btn-sm mx-2 editar" ><i class="fa fa-pencil "></i>
                                         </a>
                                         <button class="btn btn-danger btn-sm  mx-2 eliminarCliente" action="{{ url('usuarios/destroy',$cliente->id) }}"
                                             method="DELETE" token="{{ csrf_token() }}" pagina="usuarios">
@@ -53,62 +61,6 @@
                                     </center>
                                 </td>
                             </tr>
-                                {{-- modal para editar --}}
-                                <div class="modal fade" id="editarCliente{{$cliente->id}}" tabindex="-1"aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header modal-header-warning">
-                                        <h4 class="modal-title" id="exampleModalLabel">Editar usuario</h4>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                        <form action="{{url('usuarios/updateusuario', $cliente->id)}}" method="POST">
-                                        @method('PUT')
-                                            @csrf
-                                        <input type="text" hidden value="{{$cliente->persona->cod_persona}}" name="cod_persona">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                            <div class="form-group col-6"> 
-                                                <label for="nombre">Nombre</label>
-                                                <input type="text" class="form-control" id="nombre" name="nombre" value="{{$cliente->persona->nombre}}" onkeypress="return soloLetras(event)" required>
-                                            </div>
-                                            <div class="form-group col-6"> 
-                                                <label for="apellido">Apellido</label>
-                                                <input type="text" value="{{$cliente->persona->apellido}}" class="form-control" id="apellido" name="apellido" onkeypress="return soloLetras(event)" required>
-                                            </div>
-                                            </div>
-                                            <div class="row">
-                                            <div class="form-group col-6"> 
-                                                <label for="celular">Celular</label>
-                                                <input type="number" min="69000000" max="79999999" value="{{$cliente->persona->celular}}" class="form-control" id="celular" name="celular" onkeypress="return valideKey(event);"   required>
-                                            </div>
-                                            <div class="form-group col-6"> 
-                                                <label for="telefono">Celular secundario</label>
-                                                <input type="number" min="69000000" max="79999999" value="{{$cliente->persona->celular_2}}" class="form-control" id="telefono" name="telefono"  onkeypress="return valideKey(event);" >
-                                            </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-6"> 
-                                                    <label for="direccion">Dirección</label>
-                                                    <input type="text" value="{{$cliente->persona->direccion}}" class="form-control" id="direccion" name="direccion"  required>
-                                                </div>
-                                                <div class="form-group col-6"> 
-                                                    <label for="nit">Correo</label>
-                                                    <input type="email"   value="{{$cliente->email}}" class="form-control" id="nit" name="email"  required>
-                                                </div>
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                            <button type="submit" class="btn btn-warning">EDITAR</button>
-                                        </div>
-                                        </form>
-                                    </div>
-                                    </div>
-                                </div>
-                        {{-- fin modal editar --}}
                             <?php $contador++?>
                         @endforeach
                     </tbody>

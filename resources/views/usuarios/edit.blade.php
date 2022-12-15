@@ -13,7 +13,7 @@
               <div class="card card card-primary">
                 <div class="card-body">                
                   <br>
-                  <form action="{{ route('usuarios.update',$usuario->id) }}" method="POST" class="form-horizontal">
+                  <form action="{{ route('usuarios.updateusuario',$usuario->id) }}" method="POST" class="form-horizontal">
                     @csrf
                     @method('PUT')
                     <input type="text" name="cod_persona" value="{{$usuario->persona->cod_persona}}" hidden >
@@ -48,13 +48,33 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="estado">Correo<span class="required">*</span></label>
-                            <input type="email" value="{{$usuario->email}}" class="form-control" name="email" required>
+                      @foreach ($roles as $id => $role)
+                      <div class="col-md-3">
+                        
+                        <div class="border border-top-0 rounded table-responsive email-list">
+                          <table class="table mb-0 table-email">
+                            <tbody>
+                              <tr class="unread">
+                                <td class="mark-mail">
+                                  <label class="control control-checkbox mb-0">
+                                    <input type="checkbox"  type="checkbox"
+                                    value="{{ $id }}"  name="roles[]"
+                                    value="{{ $id }}" {{ $usuario->roles->contains($id) ? 'checked' : ''}} />
+                                    <div class="control-indicator"></div>
+                                  </label>
+                                 <b>{{ $role }}</b> 
+                                </td>  
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </div>
-                    </div>
+                      @endforeach
+                      
+                       
+                      </div>
+                      
+                   <br>
                     <div class="col-md-6">
                       <button type="submit" class="btn btn-primary">Guardar</button>
                       <a class="btn btn-danger" href="{{route('personas.index')}}">Volver</a>

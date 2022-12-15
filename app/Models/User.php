@@ -31,6 +31,6 @@ class User extends Authenticatable
   ];
 
   public function persona(){
-    return $this->hasOne(Persona::class,  'cod_persona');
+    return $this->hasOne( 'App\Models\Persona', 'cod_persona', 'cod_persona_users');
 }
 }

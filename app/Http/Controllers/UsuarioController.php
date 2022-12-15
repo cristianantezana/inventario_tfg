@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Models\User;
 use App\Models\Persona;
+use Spatie\Permission\Models\Role;
+
 class UsuarioController extends Controller
 {
   public function login(Request $request){
@@ -22,14 +24,17 @@ class UsuarioController extends Controller
 
   public function index()
   {
-    $usuarios = User::where('estado', '=', 1)->take(10)->orderBy('id', 'desc')->get();;
+    $usuarios = User::where('estado', '=', 1)->take(10)->orderBy('id', 'desc')->get();
+    $roles = Role::orderBy('id','desc')->get();
     
-    return view('usuarios.index', compact('usuarios'));
+    return view('usuarios.index', compact('usuarios', 'roles'));
   }
 
   public function create()
   {
-    return view('usuarios.create');
+    
+    $roles = Role::all()->pluck('name', 'id');
+    return view('usuarios.create',compact('roles'));
   }
 
   public function store(Request $request)
@@ -38,12 +43,16 @@ class UsuarioController extends Controller
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'confirmed', Rules\Password::defaults()],
     ]);
+   
 
     $user = User::create([
         'cod_persona_users' => $request->id,
         'email' => $request->email,
         'password' => Hash::make($request->password),
     ]);
+    $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
+   
     event(new Registered($user));
     return redirect()->route('usuarios.index')->with('mensaje', 'ok');
   }
@@ -59,20 +68,23 @@ class UsuarioController extends Controller
 
   public function edit($id)
   {
+     $roles = Role::all()->pluck('name', 'id');
+       // $user->load('roles');
     $usuario = User::find($id);
-    return view('usuarios.edit', compact('usuario'));
+    return view('usuarios.edit', compact('usuario', 'roles'));
     
   }
 
   public function updateUsuario(Request $request, $id)
   {
+    $user = User::find($id);
     $cod_persona = $request->cod_persona;
     $persona = Persona::find($cod_persona);
-    $data_persona = ['nombre' => $request->nombre,'apellido' => $request->apellido,'celular' => $request->celular,'celular_2' => $request->telefono,'direccion' => $request->direccion];
+    $data_persona = ['nombre' => $request->nombre,'apellido' => $request->apellido,'celular' => $request->celular,'direccion' => $request->direccion];
     $persona->update($data_persona);
-    $usuario = User::find($cod_persona);
-    $data = ['email' => $request->email];
-    $usuario->update($data);
+    $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
+
     return redirect()->route('usuarios.index')->with('mensaje', 'ok');
     
   }

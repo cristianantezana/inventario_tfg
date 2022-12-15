@@ -188,25 +188,23 @@ Route::get('proveedores/{id}/show',[ProveedorController::class, 'show'])->name('
 Route::delete('proveedores/destroy/{id}',[ProveedorController::class, 'destroy'])->name('proveedores.destroy');
 
 /*Rutas Roles */
-Route::get('roles',[RolController::class, 'index'])->name('roles.index');
-Route::get('roles/create',[RolController::class, 'create'])->name('roles.create');
-Route::post('roles/store',[RolController::class, 'store'])->name('roles.store');
-Route::get('roles/{id}/edit',[RolController::class, 'edit'])->name('roles.edit');
+// Route::get('roles',[RolController::class, 'index'])->name('roles.index');
+// Route::get('roles/create',[RolController::class, 'create'])->name('roles.create');
+// Route::post('roles/store',[RolController::class, 'store'])->name('roles.store');
+// Route::get('roles/{id}/edit',[RolController::class, 'edit'])->name('roles.edit');
 
-Route::put('roles/update/{id}',[RolController::class, 'update'])->name('roles.update');
-Route::get('roles/{id}/show',[RolController::class, 'show'])->name('roles.show');
-Route::delete('roles/destroy/{id}',[RolController::class, 'destroy'])->name('roles.destroy');
-
-
-
-/*Rutas Vehiculos */
-Route::get('vehiculos',[VehiculoController::class, 'index'])->name('vehiculos.index');
-Route::get('vehiculos/create',[VehiculoController::class, 'create'])->name('vehiculos.create');
-Route::post('vehiculos/store',[VehiculoController::class, 'store'])->name('vehiculos.store');
-Route::get('vehiculos/{id}/edit',[VehiculoController::class, 'edit'])->name('vehiculos.edit');
-Route::put('vehiculos/update/{id}',[VehiculoController::class, 'update'])->name('vehiculos.update');
-Route::get('vehiculos/{id}/show',[VehiculoController::class, 'show'])->name('vehiculos.show');
-Route::delete('vehiculos/destroy/{id}',[VehiculoController::class, 'destroy'])->name('vehiculos.destroy');
+// Route::put('roles/update/{id}',[RolController::class, 'update'])->name('roles.update');
+// Route::get('roles/{id}/show',[RolController::class, 'show'])->name('roles.show');
+ Route::delete('roles/destroy/{id}',[RolController::class, 'destroy'])->name('roles.destroy');
+Route::resource('roles', App\Http\Controllers\RolController::class);
+    /*Rutas Vehiculos */
+    Route::get('vehiculos',[VehiculoController::class, 'index'])->name('vehiculos.index');
+    Route::get('vehiculos/create',[VehiculoController::class, 'create'])->name('vehiculos.create');
+    Route::post('vehiculos/store',[VehiculoController::class, 'store'])->name('vehiculos.store');
+    Route::get('vehiculos/{id}/edit',[VehiculoController::class, 'edit'])->name('vehiculos.edit');
+    Route::put('vehiculos/update/{id}',[VehiculoController::class, 'update'])->name('vehiculos.update');
+    Route::get('vehiculos/{id}/show',[VehiculoController::class, 'show'])->name('vehiculos.show');
+    Route::delete('vehiculos/destroy/{id}',[VehiculoController::class, 'destroy'])->name('vehiculos.destroy');
 });
 
 
