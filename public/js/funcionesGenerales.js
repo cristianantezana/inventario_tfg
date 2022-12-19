@@ -1,5 +1,6 @@
 function tableEs(tabla){
   $('#'+tabla+'').DataTable({
+    "searching": false,
     language:
     {
       sProcessing: "Procesando...",
@@ -27,7 +28,8 @@ function tableEs(tabla){
         sSortDescending: ": Activar para ordenar la columna de manera descendente"
       }
     },
-    "bLengthChange" : false, //thought this line could hide the LengthMenu
+    "bLengthChange" : false, 
+    "searching": false,//thought this line could hide the LengthMenu
        
     "order": [[ 0, "asc" ]]
   });

@@ -8,6 +8,14 @@ use App\Models\Presentacion;
 
 class ProductoController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Productoindex'])->only('index');
+    $this->middleware(['permission:Productoupdate'])->only('update');
+    $this->middleware(['permission:Productocreate'])->only('create');
+    $this->middleware(['permission:Productodestroy'])->only('destroy');
+    $this->middleware(['permission:Productoedit'])->only('edit');
+  }
   public function index()
   { 
     $presentacion = Presentacion::where('estado','=',1)

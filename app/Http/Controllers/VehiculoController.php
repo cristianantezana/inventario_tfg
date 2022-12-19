@@ -6,6 +6,14 @@ use App\Models\Vehiculo;
 
 class VehiculoController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Vehiculoindex'])->only('index');
+    $this->middleware(['permission:Vehiculoupdate'])->only('update');
+    $this->middleware(['permission:Vehiculocreate'])->only('create');
+    $this->middleware(['permission:Vehiculodestroy'])->only('destroy');
+    $this->middleware(['permission:Vehiculoedit'])->only('edit');
+  }
   public function index()
   {
     $vehiculos = Vehiculo::where('estado','=',1)->orderBy('cod_vehiculo','desc')->take(10)->get();

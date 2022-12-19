@@ -47,7 +47,9 @@
                         </div>
                       </div>
                     </div>
+                    <label for="celular">Roles<span class="required">*</span></label>
                     <div class="row">
+                      
                       @foreach ($roles as $id => $role)
                       <div class="col-md-3">
                         

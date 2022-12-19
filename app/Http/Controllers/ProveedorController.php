@@ -7,6 +7,14 @@ use App\Models\Persona;
 
 class ProveedorController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Proveedorindex'])->only('index');
+    $this->middleware(['permission:Proveedorupdate'])->only('update');
+    $this->middleware(['permission:Proveedorcreate'])->only('create');
+    $this->middleware(['permission:Proveedordestroy'])->only('destroy');
+    $this->middleware(['permission:Proveedoredit'])->only('edit');
+  }
   public function index()
   {
     $proveedores= Proveedor::where('estado', '=', 1)->take(10)->orderBy('cod_proveedor', 'desc')->get();

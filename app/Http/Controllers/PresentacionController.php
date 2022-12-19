@@ -9,6 +9,14 @@ use App\Models\Medida;
 
 class PresentacionController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Presentacionindex'])->only('index');
+    $this->middleware(['permission:Presentacionupdate'])->only('update');
+    $this->middleware(['permission:Presentacioncreate'])->only('create');
+    $this->middleware(['permission:Presentaciondestroy'])->only('destroy');
+    $this->middleware(['permission:Presentacionedit'])->only('edit');
+  }
   public function index()
   { 
     $medida = Medida::where('estado','=',1)->orderBy('nombre_medida','ASC')->get();

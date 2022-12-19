@@ -15,13 +15,25 @@
                   @csrf
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">Rol</span>                        
                         </div>
                      
                         <input  required autocomplete="off" autofocus class="form-control"  name="rol" type="text" onkeypress="return soloLetras(event)" />
+                      </div>
+                    </div> 
+                    <div class="col-md-3">
+                      <div class="input-group">
+                        
+                     
+                        <input type="button" class="btn btn-primary" id="BtnSeleccionar" value="Seleccionar todos"/>
+                      </div>
+                    </div> 
+                    <div class="col-md-2">
+                      <div class="input-group">     
+                        <input type="button" class="btn btn-danger" id="DesSeleccionar" value="Desmarcar todos"/>
                       </div>
                     </div>              
                   </div>    
@@ -33,7 +45,7 @@
           <table class="table mb-0 table-email">
             <tbody>
               <tr class="unread">
-                <td class="mark-mail">
+                <td class="mark-mail" id="DivColores">
                   <label class="control control-checkbox mb-0">
                     <input type="checkbox"  type="checkbox" name="permissions[]"
                     value="{{ $id }}" />
@@ -85,7 +97,17 @@
         })
     </script>
   @endif
+  <script type="text/javascript">
+    $(document).ready(function(){
+            $('#BtnSeleccionar').click(function(){
+                $('#DivColores input[type=checkbox]').attr("checked","checked");
+            });
+            $('#DesSeleccionar').click(function(){
+                $('#DivColores input[type=checkbox]').attr("checked",false);
+            });
+        });
 
+  </script>
  
 @endsection
 

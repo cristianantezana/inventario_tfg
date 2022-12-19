@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Personaindex'])->only('index');
+    $this->middleware(['permission:Personaupdate'])->only('update');
+    $this->middleware(['permission:Personadestroy'])->only('destroy');
+  }
+
   public function index()
   {
     $personas = Persona::where('estado','=',1)->orderBy('cod_persona','desc')->take(10)->get();

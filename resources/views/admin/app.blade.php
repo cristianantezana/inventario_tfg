@@ -59,12 +59,7 @@
                   <span class="nav-text">Usuarios</span> <b class="caret"></b>
                 </a>
                 <ul class="collapse" id="email" data-parent="#sidebar-menu">
-                  <div class="sub-menu">
-                    
-                   
-                
-                
-                
+                  <div class="sub-menu">              
                     @can('Personaindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('personas.index')}}">
@@ -72,31 +67,41 @@
                       </a>
                     </li>
                     @endcan
+                    @can('Clienteindex')
                     <li >
                       <a class="sidenav-item-link" href="{{route('clientes.index')}}">
                         <span class="nav-text">Clientes</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('Proveedorindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('proveedores.index')}}">
                         <span class="nav-text">Proveedores</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('Usuarioindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('usuarios.index')}}">
                         <span class="nav-text">Usuarios</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('Rolindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('roles.index')}}">
                         <span class="nav-text">Roles</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('Permisoindex')
                     <li>
                       <a class="sidenav-item-link" href="{{route('permisos.index')}}">
                         <span class="nav-text">Permisos</span>
                       </a>
                     </li>
+                    @endcan
                   </div>
                 </ul>
               </li> 
@@ -117,18 +122,21 @@
                       </a>
                     </li>
                 @endcan
-                    
+                @can('Medidaindex')
                     <li >
                       <a class="sidenav-item-link" href="{{route('medidas.index')}}">
                         <span class="nav-text">Medidas</span>
                       </a>
                     </li>
+                    @endcan
+                    @can('Presentacionindex')
                     <li >
                       <a class="sidenav-item-link" href="{{route('presentaciones.index')}}">
                         <span class="nav-text">Presentaciones</span>
                       </a>
                     </li>
-                    @can('Productoscreate')
+                    @endcan
+                    @can('Productoindex')
                     <li >
                       <a class="sidenav-item-link" href="{{route('productos.index')}}">
                         <span class="nav-text">Productos</span>

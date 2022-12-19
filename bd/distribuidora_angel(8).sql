@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-12-2022 a las 00:55:31
+-- Tiempo de generación: 20-12-2022 a las 00:24:55
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -338,11 +338,60 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(3, 'Categoriaindex', 'web', '2022-12-14 01:55:09', '2022-12-14 01:55:09'),
-(4, 'Productoscreate', 'web', '2022-12-15 22:17:10', '2022-12-15 22:17:10'),
 (5, 'Personaindex', 'web', '2022-12-15 22:17:36', '2022-12-16 03:38:45'),
 (7, 'Vehiculosindex', 'web', '2022-12-16 03:41:35', '2022-12-16 03:41:35'),
-(8, 'ModuloProductos', 'web', '2022-12-16 03:42:47', '2022-12-16 03:42:47');
+(8, 'ModuloProductos', 'web', '2022-12-16 03:42:47', '2022-12-16 03:42:47'),
+(9, 'Categoriaindex', 'web', '2022-12-20 01:51:40', '2022-12-20 01:51:40'),
+(10, 'Categoriaupdate', 'web', '2022-12-20 01:51:58', '2022-12-20 01:51:58'),
+(11, 'Categoriadestroy', 'web', '2022-12-20 01:52:11', '2022-12-20 01:52:11'),
+(12, 'Categoriaedit', 'web', '2022-12-20 01:52:26', '2022-12-20 01:52:26'),
+(13, 'Clienteindex', 'web', '2022-12-20 01:52:42', '2022-12-20 01:52:42'),
+(14, 'Clienteupdate', 'web', '2022-12-20 01:52:57', '2022-12-20 01:52:57'),
+(16, 'Clientecreate', 'web', '2022-12-20 01:54:33', '2022-12-20 01:54:33'),
+(17, 'Clientedestroy', 'web', '2022-12-20 01:54:43', '2022-12-20 01:54:43'),
+(18, 'Clienteedit', 'web', '2022-12-20 01:54:51', '2022-12-20 01:54:51'),
+(19, 'Medidaindex', 'web', '2022-12-20 01:55:06', '2022-12-20 01:55:06'),
+(20, 'Medidaupdate', 'web', '2022-12-20 01:55:16', '2022-12-20 01:55:16'),
+(21, 'Medidacreate', 'web', '2022-12-20 01:55:24', '2022-12-20 01:55:24'),
+(22, 'Medidadestroy', 'web', '2022-12-20 01:55:35', '2022-12-20 01:55:35'),
+(23, 'Medidaedit', 'web', '2022-12-20 01:55:48', '2022-12-20 01:55:48'),
+(24, 'Permisoindex', 'web', '2022-12-20 01:56:24', '2022-12-20 01:56:24'),
+(25, 'Permisoupdate', 'web', '2022-12-20 01:56:37', '2022-12-20 01:56:37'),
+(26, 'Permisocreate', 'web', '2022-12-20 01:56:45', '2022-12-20 01:56:45'),
+(27, 'Permisodestroy', 'web', '2022-12-20 01:56:55', '2022-12-20 01:56:55'),
+(28, 'Permisoedit', 'web', '2022-12-20 01:57:06', '2022-12-20 01:57:06'),
+(29, 'Personaupdate', 'web', '2022-12-20 01:57:39', '2022-12-20 01:57:39'),
+(30, 'Personadestroy', 'web', '2022-12-20 01:57:50', '2022-12-20 01:57:50'),
+(31, 'Presentacionindex', 'web', '2022-12-20 01:59:46', '2022-12-20 01:59:46'),
+(32, 'Presentacionupdate', 'web', '2022-12-20 02:00:00', '2022-12-20 02:00:00'),
+(33, 'Presentacioncreate', 'web', '2022-12-20 02:00:09', '2022-12-20 02:00:09'),
+(34, 'Presentaciondestroy', 'web', '2022-12-20 02:00:23', '2022-12-20 02:00:23'),
+(35, 'Presentacionedit', 'web', '2022-12-20 02:00:39', '2022-12-20 02:00:39'),
+(36, 'Productoindex', 'web', '2022-12-20 02:01:02', '2022-12-20 02:01:02'),
+(37, 'Productoupdate', 'web', '2022-12-20 02:01:12', '2022-12-20 02:01:12'),
+(38, 'Productocreate', 'web', '2022-12-20 02:01:22', '2022-12-20 02:01:22'),
+(39, 'Productodestroy', 'web', '2022-12-20 02:01:30', '2022-12-20 02:01:30'),
+(40, 'Productoedit', 'web', '2022-12-20 02:01:42', '2022-12-20 02:01:42'),
+(41, 'Proveedorindex', 'web', '2022-12-20 02:01:57', '2022-12-20 02:01:57'),
+(42, 'Proveedorupdate', 'web', '2022-12-20 02:02:09', '2022-12-20 02:02:09'),
+(43, 'Proveedorcreate', 'web', '2022-12-20 02:02:17', '2022-12-20 02:02:17'),
+(44, 'Proveedordestroy', 'web', '2022-12-20 02:02:25', '2022-12-20 02:02:25'),
+(45, 'Proveedoredit', 'web', '2022-12-20 02:02:32', '2022-12-20 02:02:32'),
+(46, 'Rolindex', 'web', '2022-12-20 02:03:18', '2022-12-20 02:03:18'),
+(47, 'Rolupdate', 'web', '2022-12-20 02:03:28', '2022-12-20 02:03:28'),
+(48, 'Rolcreate', 'web', '2022-12-20 02:03:40', '2022-12-20 02:03:40'),
+(49, 'Roldestroy', 'web', '2022-12-20 02:03:48', '2022-12-20 02:03:48'),
+(50, 'Roledit', 'web', '2022-12-20 02:03:57', '2022-12-20 02:03:57'),
+(51, 'Usuarioindex', 'web', '2022-12-20 02:04:09', '2022-12-20 02:04:09'),
+(52, 'Usuarioupdate', 'web', '2022-12-20 02:04:18', '2022-12-20 02:04:18'),
+(53, 'Usuariocreate', 'web', '2022-12-20 02:04:25', '2022-12-20 02:04:25'),
+(54, 'Usuariodestroy', 'web', '2022-12-20 02:04:33', '2022-12-20 02:04:33'),
+(55, 'Usuarioedit', 'web', '2022-12-20 02:04:51', '2022-12-20 02:04:51'),
+(56, 'Vehiculoindex', 'web', '2022-12-20 02:05:09', '2022-12-20 02:05:09'),
+(57, 'Vehiculoupdate', 'web', '2022-12-20 02:05:17', '2022-12-20 02:05:17'),
+(58, 'Vehiculocreate', 'web', '2022-12-20 02:05:26', '2022-12-20 02:05:26'),
+(59, 'Vehiculodestroy', 'web', '2022-12-20 02:05:34', '2022-12-20 02:05:34'),
+(60, 'Vehiculoedit', 'web', '2022-12-20 02:05:41', '2022-12-20 02:05:41');
 
 -- --------------------------------------------------------
 
@@ -616,14 +665,62 @@ CREATE TABLE `role_has_permissions` (
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(3, 5),
-(3, 10),
-(4, 4),
 (5, 4),
 (5, 5),
 (5, 10),
 (7, 4),
-(8, 4);
+(8, 4),
+(9, 4),
+(10, 4),
+(11, 4),
+(12, 4),
+(13, 4),
+(14, 4),
+(16, 4),
+(17, 4),
+(18, 4),
+(19, 4),
+(20, 4),
+(21, 4),
+(22, 4),
+(23, 4),
+(24, 4),
+(25, 4),
+(26, 4),
+(27, 4),
+(28, 4),
+(29, 4),
+(30, 4),
+(31, 4),
+(32, 4),
+(33, 4),
+(34, 4),
+(35, 4),
+(36, 4),
+(37, 4),
+(38, 4),
+(39, 4),
+(40, 4),
+(41, 4),
+(42, 4),
+(43, 4),
+(44, 4),
+(45, 4),
+(46, 4),
+(47, 4),
+(48, 4),
+(49, 4),
+(50, 4),
+(51, 4),
+(52, 4),
+(53, 4),
+(54, 4),
+(55, 4),
+(56, 4),
+(57, 4),
+(58, 4),
+(59, 4),
+(60, 4);
 
 -- --------------------------------------------------------
 
@@ -650,12 +747,12 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `cod_persona_users`, `name`, `email`, `email_verified_at`, `password`, `estado`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 1, 'cristian', 'cristian1997@gmail.com', NULL, '$2y$10$xJwwsNhPr2YGsAyvUw/m0e7/GpAg8L1piedD1HRpGR504sBSyKo2.', 1, NULL, '2022-12-08 03:35:31', '2022-12-13 01:46:15'),
-(3, 19, NULL, 'matis@gmail.com', NULL, '$2y$10$xPxY6V/i.jcmUTIgqjWbWO0.mIMTL.1lHU7hKaXg12E/zvXjcCnzm', 1, NULL, '2022-12-09 02:27:59', '2022-12-09 03:23:07'),
-(4, 2, NULL, 'mateo@gmail.com', NULL, '$2y$10$Qv4RJp5Cyr.h.2b3HaOvQ.4Qh.gpX4Wq.i7tx83SVmGkGw3eGW7RO', 1, NULL, '2022-12-13 02:52:33', '2022-12-13 02:52:33'),
+(3, 19, NULL, 'matis@gmail.com', NULL, '$2y$10$xPxY6V/i.jcmUTIgqjWbWO0.mIMTL.1lHU7hKaXg12E/zvXjcCnzm', 0, NULL, '2022-12-09 02:27:59', '2022-12-20 03:23:24'),
+(4, 2, NULL, 'mateo@gmail.com', NULL, '$2y$10$Qv4RJp5Cyr.h.2b3HaOvQ.4Qh.gpX4Wq.i7tx83SVmGkGw3eGW7RO', 0, NULL, '2022-12-13 02:52:33', '2022-12-20 03:23:30'),
 (5, 27, NULL, 'pedro@gamil.com', NULL, '$2y$10$RlXDLqrl4FZnXTn9OC0cMeM9jqLxmfoshm3AQwkBKOfsvnGu5XaJO', 1, NULL, '2022-12-15 06:25:10', '2022-12-15 06:25:10'),
 (6, 21, NULL, 'pepe@gmail.com', NULL, '$2y$10$HNSvkuRXV1FtUzsSeg8iUuzyoXxjPjsf5Rle19BAl4iSMyYuiBGGi', 1, NULL, '2022-12-15 06:26:13', '2022-12-15 06:26:13'),
 (7, 28, NULL, 'JOSE@gmail.com', NULL, '$2y$10$Mw1RhXIZHuuJSqojv2pv1.pFINwBWmCN0xoT.aPXwsG3gC.EtAR7e', 1, NULL, '2022-12-15 06:47:14', '2022-12-15 06:47:14'),
-(8, 10, NULL, 'pachu123@gmail.com', NULL, '$2y$10$TtZ.HDToAVxHlaZtT1k/Q.J/Vx6zmvYRBM0pAztVZSQMkThDZqnCi', 1, NULL, '2022-12-16 03:11:08', '2022-12-16 03:11:08');
+(8, 10, NULL, 'pachu123@gmail.com', NULL, '$2y$10$TtZ.HDToAVxHlaZtT1k/Q.J/Vx6zmvYRBM0pAztVZSQMkThDZqnCi', 0, NULL, '2022-12-16 03:11:08', '2022-12-20 03:23:17');
 
 -- --------------------------------------------------------
 
@@ -970,7 +1067,7 @@ ALTER TABLE `pedido_catalogo`
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`

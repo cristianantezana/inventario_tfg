@@ -16,7 +16,7 @@
                   @method('PUT')
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="input-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">Rol</span>                        
@@ -24,28 +24,43 @@
                      
                         <input value="{{ old('name', $role->name) }}" autocomplete="off" autofocus class="form-control"  name="name" type="text" onkeypress="return soloLetras(event)" />
                       </div>
-                    </div>              
+                    </div> 
+                    <div class="col-md-3">
+                      <div class="input-group">
+                        
+                     
+                        <input type="button" class="btn btn-primary" id="BtnSeleccionar" value="Seleccionar todos"/>
+                      </div>
+                    </div> 
+                    <div class="col-md-2">
+                      <div class="input-group">     
+                        <input type="button" class="btn btn-danger" id="DesSeleccionar" value="Desmarcar todos"/>
+                      </div>
+                    </div>             
                   </div>    
-                 
+                  
     <div class="row">
       @foreach ($permissions as $id => $permission)
       <div class="col-md-6" >
-        <div class="border border-top-0 rounded table-responsive email-list">
-          <table class="table mb-0 table-email">
-            <tbody>
-              <tr class="unread">
-                <td class="mark-mail">
-                  <label class="control control-checkbox mb-0">
-                    <input type="checkbox"  type="checkbox" name="permissions[]"
-                    value="{{ $id }}" {{ $role->permissions->contains($id) ? 'checked' : '' }} />
-                    <div class="control-indicator"></div>
-                  </label>
-                 <b>{{ $permission }}</b> 
-                </td>  
-              </tr>
-            </tbody>
-          </table>
+        <div id="#BtnSeleccionar">
+          <div class="border border-top-0 rounded table-responsive email-list">
+            <table class="table mb-0 table-email">
+              <tbody>
+                <tr class="unread">
+                  <td class="mark-mail" id="DivColores">
+                    <label class="control control-checkbox mb-0">
+                      <input type="checkbox"  type="checkbox" name="permissions[]"
+                      value="{{ $id }}" {{ $role->permissions->contains($id) ? 'checked' : '' }} />
+                      <div class="control-indicator"></div>
+                    </label>
+                   <b>{{ $permission }}</b> 
+                  </td>  
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+        
       </div>
       @endforeach
     
@@ -68,9 +83,6 @@
       </section>
     </div>
   </div>
-
-
-
 
 
 @endsection
@@ -96,14 +108,13 @@
   @endforeach
   <script type="text/javascript">
     $(document).ready(function(){
-      $('.select2').select2();
-      let data=[5,6];
-
-
-
-
-    })
-
+            $('#BtnSeleccionar').click(function(){
+                $('#DivColores input[type=checkbox]').attr("checked","checked");
+            });
+            $('#DesSeleccionar').click(function(){
+                $('#DivColores input[type=checkbox]').attr("checked",false);
+            });
+        });
 
   </script>
 @endsection

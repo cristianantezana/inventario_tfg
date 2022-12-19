@@ -115,6 +115,7 @@
                       </table>
                     </div>
                   </div>
+                  
                 </div>
               </div>
             </div>
@@ -137,6 +138,8 @@
     </script>    
   @endif    
   <script type="text/javascript">
+  let tabla= "table";
+  tableEs(tabla);
     let clase = 'eliminarPersona';
     let mensaje = "De eliminar a este registro!";
     eliminarPorRuta(mensaje,clase);

@@ -7,6 +7,14 @@ use App\Models\Categoria;
 
 class MedidaController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Medidaindex'])->only('index');
+    $this->middleware(['permission:Medidaupdate'])->only('update');
+    $this->middleware(['permission:Medidacreate'])->only('create');
+    $this->middleware(['permission:Medidadestroy'])->only('destroy');
+    $this->middleware(['permission:Medidaedit'])->only('edit');
+  }
   public function index()
   {
     $medidas = Categoria::where('estado','=',1)->orderBy('cod_categoria','desc')->take(10)->get();

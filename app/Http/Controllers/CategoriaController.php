@@ -5,6 +5,13 @@ use Illuminate\Http\Request;
 use App\Models\Categoria;
 class CategoriaController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Categoriaindex'])->only('index');
+    $this->middleware(['permission:Categoriaupdate'])->only('update');
+    $this->middleware(['permission:Categoriadestroy'])->only('destroy');
+    $this->middleware(['permission:Categoriaedit'])->only('edit');
+  }
   public function index()
   { 
     $categorias = Categoria::where('estado','=',1)

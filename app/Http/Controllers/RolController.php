@@ -10,6 +10,14 @@ use Spatie\Permission\Traits\HasRoles;
 
 class RolController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Rolindex'])->only('index');
+    $this->middleware(['permission:Rolupdate'])->only('update');
+    $this->middleware(['permission:Rolcreate'])->only('create');
+    $this->middleware(['permission:Roldestroy'])->only('destroy');
+    $this->middleware(['permission:Roledit'])->only('edit');
+  }
   public function index()
   {
     $permiso = Permission::all()->pluck('name','id');

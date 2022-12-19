@@ -6,6 +6,14 @@ use App\Models\Cliente;
 use App\Models\Persona;
 class ClienteController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware(['permission:Clienteindex'])->only('index');
+    $this->middleware(['permission:Clienteupdate'])->only('update');
+    $this->middleware(['permission:Clientecreate'])->only('create');
+    $this->middleware(['permission:Clientedestroy'])->only('destroy');
+    $this->middleware(['permission:Clienteedit'])->only('edit');
+  }
   public function index()
   {
     $clientes = Cliente::where('estado', '=', 1)->take(10)->orderBy('cod_cliente', 'desc')->get();

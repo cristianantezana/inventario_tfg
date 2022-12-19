@@ -74,15 +74,15 @@
                           @foreach ($roles as $item)
                             <tr>
                               <td  class="text-center" scope="row"><?php echo $contador;?></td>
-                              <td class="text-center">{{$item->name}}</td>
+                              <td class="text-center" style="width: 200px;">{{$item->name}}</td>
                               <td class="text-center">
                                 @forelse ($item->permissions as $permiso)
-                                    <span class="badge badge-info">{{$permiso->name}}</span><br>
+                                    <span class="badge badge-info">{{$permiso->name}}</span>
                                 @empty
                                   <span class="badge badge-danger">Sin permisos</span>
                                 @endforelse
                               </td>
-                              <td class="text-center">     
+                              <td class="text-center" style="width: 200px;">     
                                 <center>
                                   <a class="btn btn-warning btn-sm mx-2" href="{{ route('roles.edit', $item->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                                   
