@@ -9,14 +9,14 @@ use Spatie\Permission\Traits\HasRoles;
 
 class PermisoController extends Controller
 {
-  // public function __construct()
-  // {
-  //   $this->middleware(['permission:Permisoindex'])->only('index');
-  //   $this->middleware(['permission:Permisoupdate'])->only('update');
-  //   $this->middleware(['permission:Permisocreate'])->only('create');
-  //   $this->middleware(['permission:Permisodestroy'])->only('destroy');
-  //   $this->middleware(['permission:Permisoedit'])->only('edit');
-  // }
+  public function __construct()
+  {
+    $this->middleware(['permission:Permisoindex'])->only('index');
+    $this->middleware(['permission:Permisoupdate'])->only('update');
+    $this->middleware(['permission:Permisocreate'])->only('create');
+    $this->middleware(['permission:Permisodestroy'])->only('destroy');
+    $this->middleware(['permission:Permisoedit'])->only('edit');
+  }
     use HasRoles;
     public function index()
     {
