@@ -14,14 +14,14 @@ use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware(['permission:Usuarioindex'])->only('index');
-    $this->middleware(['permission:Usuarioupdate'])->only('update');
-    $this->middleware(['permission:Usuariocreate'])->only('create');
-    $this->middleware(['permission:Usuariodestroy'])->only('destroy');
-    $this->middleware(['permission:Usuarioedit'])->only('edit');
-  }
+  // public function __construct()
+  // {
+  //   $this->middleware(['permission:Usuarioindex'])->only('index');
+  //   $this->middleware(['permission:Usuarioupdate'])->only('update');
+  //   $this->middleware(['permission:Usuariocreate'])->only('create');
+  //   $this->middleware(['permission:Usuariodestroy'])->only('destroy');
+  //   $this->middleware(['permission:Usuarioedit'])->only('edit');
+  // }
 
   public function login(Request $request){
       $this->validate(request(),[
