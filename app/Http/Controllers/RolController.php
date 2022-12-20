@@ -71,7 +71,7 @@ class RolController extends Controller
         // $role->permissions()->sync($request->input('permissions', []));
         $role->syncPermissions($request->input('permissions', []));
 
-        return redirect()->route('roles.index');
+        return redirect()->route('roles.index')->with('mensaje', 'ok');
     }
 
   public function destroy($id)
