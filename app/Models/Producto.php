@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Presentacion;
+use App\Models\Catalogo;
 
 class Producto extends Model
 {
@@ -19,5 +20,8 @@ class Producto extends Model
   }
   public function presentacion(){
       return $this->belongsTo(Presentacion::class,'cod_presentacion_produ','cod_presentacion');
+  }
+  public function catalogos(){
+    return $this->hasMany(Catalogo::class,'cod_producto_cata','cod_producto');
   }
 }

@@ -150,6 +150,26 @@
               @endcan
               <li  class="has-sub" >
                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#vehiculos"
+                  aria-expanded="false" aria-controls="compras">
+                  <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                  <span class="nav-text">Compras</span> <b class="caret"></b>
+                </a>
+                @can('Compraindex')
+                  <ul  class="collapse"  id="vehiculos"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
+                    <li >
+                      <a class="sidenav-item-link" href="{{route('compras.index')}}">
+                        <span class="nav-text">Compras</span>
+                      </a>
+                    </li>
+                  </div>
+                </ul>
+                @endcan
+              
+            </li> 
+              <li  class="has-sub" >
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#vehiculos"
                   aria-expanded="false" aria-controls="vehiculos">
                   <i class="fa fa-car" aria-hidden="true"></i>
                   <span class="nav-text">Vehiculos</span> <b class="caret"></b>
@@ -166,8 +186,7 @@
                   </div>
                 </ul>
                 @endcan
-                
-              </li> 
+             
             </ul>
           </div>
         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-12-2022 a las 00:24:55
+-- Tiempo de generación: 22-12-2022 a las 23:35:49
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -29,16 +29,12 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `catalogo` (
   `cod_catalogo` int(11) NOT NULL,
-  `cod_compra_cata` int(11) NOT NULL,
   `cod_producto_cata` int(11) NOT NULL,
   `cod_promocion_cat` int(11) NOT NULL,
   `lote` int(11) NOT NULL,
   `stock` decimal(10,2) NOT NULL,
   `fecha_vencimiento` date NOT NULL,
   `precio_venta` decimal(10,2) NOT NULL,
-  `precio_compra` decimal(10,2) NOT NULL,
-  `cantidad_compra` decimal(10,2) NOT NULL,
-  `precio_total` decimal(10,2) NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `update_at` timestamp NULL DEFAULT current_timestamp()
@@ -48,9 +44,11 @@ CREATE TABLE `catalogo` (
 -- Volcado de datos para la tabla `catalogo`
 --
 
-INSERT INTO `catalogo` (`cod_catalogo`, `cod_compra_cata`, `cod_producto_cata`, `cod_promocion_cat`, `lote`, `stock`, `fecha_vencimiento`, `precio_venta`, `precio_compra`, `cantidad_compra`, `precio_total`, `estado`, `created_at`, `update_at`) VALUES
-(2, 2, 1, 1, 10, '500.00', '2022-12-08', '20.00', '10.00', '80.00', '120.00', 1, '2022-11-06 21:41:48', '2022-11-06 21:41:48'),
-(3, 1, 2, 2, 11, '80.00', '2022-12-09', '50.00', '200.00', '500.00', '180.00', 1, '2022-11-06 21:42:44', '2022-11-06 21:42:44');
+INSERT INTO `catalogo` (`cod_catalogo`, `cod_producto_cata`, `cod_promocion_cat`, `lote`, `stock`, `fecha_vencimiento`, `precio_venta`, `estado`, `created_at`, `update_at`) VALUES
+(4, 8, 1, 100, '80.00', '2022-12-31', '8.00', 1, '2022-12-22 20:08:00', '2022-12-22 20:08:00'),
+(5, 1, 1, 102, '50.00', '2022-12-31', '8.00', 1, '2022-12-22 22:16:01', '2022-12-22 22:16:01'),
+(6, 2, 1, 1003, '50.00', '2022-12-16', '40.00', 1, '2022-12-22 22:29:06', '2022-12-22 22:29:06'),
+(7, 7, 2, 1005, '50.00', '2022-12-17', '40.00', 1, '2022-12-22 22:29:34', '2022-12-22 22:29:34');
 
 -- --------------------------------------------------------
 
@@ -123,6 +121,7 @@ INSERT INTO `cliente` (`cod_cliente`, `cod_persona_cli`, `nit`, `razon_social`, 
 CREATE TABLE `compra` (
   `cod_compra` int(11) NOT NULL,
   `cod_proveedor_com` int(11) NOT NULL,
+  `n_factura` int(20) NOT NULL,
   `descripcion` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `fecha` datetime NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
@@ -134,9 +133,41 @@ CREATE TABLE `compra` (
 -- Volcado de datos para la tabla `compra`
 --
 
-INSERT INTO `compra` (`cod_compra`, `cod_proveedor_com`, `descripcion`, `fecha`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 'se compro todo', '2022-11-06 05:58:17', 1, '2022-11-06 04:58:57', '2022-11-06 04:58:57'),
-(2, 2, 'se compro galletas', '2022-11-06 22:36:52', 1, '2022-11-06 21:37:07', '2022-11-06 21:37:07');
+INSERT INTO `compra` (`cod_compra`, `cod_proveedor_com`, `n_factura`, `descripcion`, `fecha`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 1, 1001, 'se compro todo', '2022-11-06 05:58:17', 1, '2022-11-06 04:58:57', '2022-11-06 04:58:57'),
+(2, 2, 1002, 'se compro galletas', '2022-11-06 22:36:52', 1, '2022-11-06 21:37:07', '2022-11-06 21:37:07'),
+(3, 5, 7854, 'compra prueba', '2022-12-23 00:00:00', 1, '2022-12-23 02:16:48', '2022-12-23 02:16:48'),
+(4, 5, 7854, 'compra prueba', '2022-12-23 00:00:00', 1, '2022-12-23 02:18:38', '2022-12-23 02:18:38'),
+(5, 5, 7854, 'compra prueba', '2022-12-23 00:00:00', 1, '2022-12-23 02:19:58', '2022-12-23 02:19:58'),
+(6, 4, 1452, 'PREUBA', '2022-12-23 00:00:00', 1, '2022-12-23 02:24:26', '2022-12-23 02:24:26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `detalle_compra`
+--
+
+CREATE TABLE `detalle_compra` (
+  `cod_detalle_compra` int(11) NOT NULL,
+  `cod_compra_detalle` int(11) NOT NULL,
+  `cod_catalogo_detalle` int(11) NOT NULL,
+  `cantidad_compra` decimal(10,2) NOT NULL,
+  `precio_compra` decimal(10,2) NOT NULL,
+  `subtotal` decimal(10,2) NOT NULL,
+  `estado` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `detalle_compra`
+--
+
+INSERT INTO `detalle_compra` (`cod_detalle_compra`, `cod_compra_detalle`, `cod_catalogo_detalle`, `cantidad_compra`, `precio_compra`, `subtotal`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 5, 5, '2.00', '50.00', '100.00', 1, '2022-12-23 02:19:58', '2022-12-23 02:19:58'),
+(2, 5, 4, '5.00', '40.00', '200.00', 1, '2022-12-23 02:19:58', '2022-12-23 02:19:58'),
+(3, 6, 5, '8.00', '40.00', '320.00', 1, '2022-12-23 02:24:26', '2022-12-23 02:24:26'),
+(4, 6, 4, '8.00', '10.00', '80.00', 1, '2022-12-23 02:24:26', '2022-12-23 02:24:26');
 
 -- --------------------------------------------------------
 
@@ -263,8 +294,11 @@ CREATE TABLE `model_has_roles` (
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (4, 'App\\Models\\User', 1),
 (4, 'App\\Models\\User', 8),
+(4, 'App\\Models\\User', 9),
 (5, 'App\\Models\\User', 5),
-(5, 'App\\Models\\User', 6);
+(5, 'App\\Models\\User', 6),
+(5, 'App\\Models\\User', 9),
+(10, 'App\\Models\\User', 9);
 
 -- --------------------------------------------------------
 
@@ -286,7 +320,7 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `pedido` (
   `cod_pedido` int(11) NOT NULL,
-  `cod_promotor_ped` int(11) NOT NULL,
+  `cod_users_ped` int(11) DEFAULT NULL,
   `cod_cliente_ped` int(11) NOT NULL,
   `nota` text COLLATE utf8_unicode_ci NOT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1,
@@ -298,7 +332,7 @@ CREATE TABLE `pedido` (
 -- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`cod_pedido`, `cod_promotor_ped`, `cod_cliente_ped`, `nota`, `estado`, `created_at`, `updated_at`) VALUES
+INSERT INTO `pedido` (`cod_pedido`, `cod_users_ped`, `cod_cliente_ped`, `nota`, `estado`, `created_at`, `updated_at`) VALUES
 (2, 2, 2, 'pepe', 1, '2022-11-06 21:39:37', '2022-11-06 21:39:37'),
 (3, 2, 1, 'siiii', 1, '2022-11-06 23:14:42', '2022-11-06 23:14:42');
 
@@ -391,7 +425,9 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at
 (57, 'Vehiculoupdate', 'web', '2022-12-20 02:05:17', '2022-12-20 02:05:17'),
 (58, 'Vehiculocreate', 'web', '2022-12-20 02:05:26', '2022-12-20 02:05:26'),
 (59, 'Vehiculodestroy', 'web', '2022-12-20 02:05:34', '2022-12-20 02:05:34'),
-(60, 'Vehiculoedit', 'web', '2022-12-20 02:05:41', '2022-12-20 02:05:41');
+(60, 'Vehiculoedit', 'web', '2022-12-20 02:05:41', '2022-12-20 02:05:41'),
+(61, 'Compraindex', 'web', '2022-12-23 02:30:50', '2022-12-23 02:30:50'),
+(62, 'Compracreate', 'web', '2022-12-23 02:31:05', '2022-12-23 02:31:05');
 
 -- --------------------------------------------------------
 
@@ -442,7 +478,8 @@ INSERT INTO `persona` (`cod_persona`, `nombre`, `apellido`, `celular`, `celular_
 (25, 'MARCOS', 'SUAREZ', '6858461', '68451', 'av.paurito', 0, '2022-11-24 05:14:18', '2022-12-07 04:08:23'),
 (26, 'Mateo', 'Soliz Martinez', '69000001', '69000000', 'av_soliz', 1, '2022-12-09 03:08:30', '2022-12-09 03:08:30'),
 (27, 'Pedro', 'Martinez', '76085872', '69026026', 'Paititi', 1, '2022-12-15 06:24:20', '2022-12-15 06:24:20'),
-(28, 'Joselito', 'Vaca', '73123148', '78505580', 'PERAFLORES', 1, '2022-12-15 06:46:34', '2022-12-15 06:46:34');
+(28, 'Joselito', 'Vaca', '73123148', '78505580', 'PERAFLORES', 1, '2022-12-15 06:46:34', '2022-12-15 06:46:34'),
+(29, 'Julio', 'Perez Suarez', '76085872', '73123248', 'suares', 1, '2022-12-20 05:21:45', '2022-12-20 05:21:45');
 
 -- --------------------------------------------------------
 
@@ -516,14 +553,14 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`cod_producto`, `cod_categoria_produ`, `cod_presentacion_produ`, `nombre_producto`, `imagen`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'Wafs limon', 'foto.jpg', 0, '2022-11-06 21:21:54', '2022-11-16 21:57:29'),
+(1, 1, 2, 'Galletas wafer', 'foto.jpg', 0, '2022-11-06 21:21:54', '2022-11-16 21:57:29'),
 (2, 3, 5, 'FIdeos', 'fideo.jpg', 1, '2022-11-06 21:25:16', '2022-11-24 02:53:59'),
 (3, 1, 2, 'LA SUPREMA FRESA', 'FOTO.JPG', 0, '2022-11-06 23:26:48', '2022-11-24 01:42:07'),
 (4, 3, 3, 'pelota', NULL, 0, '2022-11-16 21:07:44', '2022-11-16 21:57:19'),
 (5, 3, 2, 'sublime', NULL, 0, '2022-11-16 21:11:05', '2022-11-16 21:56:17'),
 (6, 3, 2, 'ddddddd', NULL, 0, '2022-11-16 21:11:46', '2022-11-16 21:54:29'),
 (7, 1, 2, 'SUBLIME', NULL, 0, '2022-11-16 21:13:37', '2022-11-24 01:46:50'),
-(8, 3, 5, 'soda', NULL, 1, '2022-11-24 02:53:51', '2022-11-28 03:40:15'),
+(8, 3, 5, 'Soda Cola-Cola', NULL, 1, '2022-11-24 02:53:51', '2022-11-28 03:40:15'),
 (9, 2, 5, 'SODA', NULL, 0, '2022-11-24 05:16:48', '2022-11-24 05:17:06'),
 (10, 29, 10, 'coca cola', NULL, 0, '2022-11-24 19:25:11', '2022-11-28 03:40:04'),
 (11, 29, 3, 'listones', NULL, 1, '2022-11-28 03:40:30', '2022-11-28 03:40:30');
@@ -647,7 +684,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (4, 'Administrador', 'web', '2022-12-15 04:18:17', '2022-12-15 04:18:17'),
 (5, 'Promotor', 'web', '2022-12-15 04:18:32', '2022-12-15 04:18:32'),
-(10, 'Jefe de almacén', 'web', '2022-12-16 02:52:22', '2022-12-16 02:52:22');
+(10, 'Jefe de almacén', 'web', '2022-12-16 02:52:22', '2022-12-16 02:52:22'),
+(11, 'pepe', 'web', '2022-12-20 04:47:09', '2022-12-20 04:47:09');
 
 -- --------------------------------------------------------
 
@@ -668,6 +706,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (5, 4),
 (5, 5),
 (5, 10),
+(5, 11),
 (7, 4),
 (8, 4),
 (9, 4),
@@ -720,7 +759,9 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (57, 4),
 (58, 4),
 (59, 4),
-(60, 4);
+(60, 4),
+(61, 4),
+(62, 4);
 
 -- --------------------------------------------------------
 
@@ -752,7 +793,8 @@ INSERT INTO `users` (`id`, `cod_persona_users`, `name`, `email`, `email_verified
 (5, 27, NULL, 'pedro@gamil.com', NULL, '$2y$10$RlXDLqrl4FZnXTn9OC0cMeM9jqLxmfoshm3AQwkBKOfsvnGu5XaJO', 1, NULL, '2022-12-15 06:25:10', '2022-12-15 06:25:10'),
 (6, 21, NULL, 'pepe@gmail.com', NULL, '$2y$10$HNSvkuRXV1FtUzsSeg8iUuzyoXxjPjsf5Rle19BAl4iSMyYuiBGGi', 1, NULL, '2022-12-15 06:26:13', '2022-12-15 06:26:13'),
 (7, 28, NULL, 'JOSE@gmail.com', NULL, '$2y$10$Mw1RhXIZHuuJSqojv2pv1.pFINwBWmCN0xoT.aPXwsG3gC.EtAR7e', 1, NULL, '2022-12-15 06:47:14', '2022-12-15 06:47:14'),
-(8, 10, NULL, 'pachu123@gmail.com', NULL, '$2y$10$TtZ.HDToAVxHlaZtT1k/Q.J/Vx6zmvYRBM0pAztVZSQMkThDZqnCi', 0, NULL, '2022-12-16 03:11:08', '2022-12-20 03:23:17');
+(8, 10, NULL, 'pachu123@gmail.com', NULL, '$2y$10$TtZ.HDToAVxHlaZtT1k/Q.J/Vx6zmvYRBM0pAztVZSQMkThDZqnCi', 0, NULL, '2022-12-16 03:11:08', '2022-12-20 03:23:17'),
+(9, 29, NULL, 'julio123@gmail.com', NULL, '$2y$10$zZehDMJGgKIl9gWjgnab6uWWWp98yEw2iBT6T52xszdCx.Q.Li2SW', 1, NULL, '2022-12-20 05:22:24', '2022-12-20 05:22:24');
 
 -- --------------------------------------------------------
 
@@ -815,7 +857,6 @@ INSERT INTO `vehiculo` (`cod_vehiculo`, `color`, `placa`, `marca`, `estado`, `cr
 --
 ALTER TABLE `catalogo`
   ADD PRIMARY KEY (`cod_catalogo`),
-  ADD KEY `cod_compra_cata` (`cod_compra_cata`),
   ADD KEY `cod_producto_cata` (`cod_producto_cata`),
   ADD KEY `cod_promocion_cat` (`cod_promocion_cat`);
 
@@ -838,6 +879,12 @@ ALTER TABLE `cliente`
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`cod_compra`),
   ADD KEY `cod_proveedor_com` (`cod_proveedor_com`);
+
+--
+-- Indices de la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  ADD PRIMARY KEY (`cod_detalle_compra`);
 
 --
 -- Indices de la tabla `devolucion`
@@ -890,7 +937,6 @@ ALTER TABLE `password_resets`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`cod_pedido`),
-  ADD KEY `cod_promotor_ped` (`cod_promotor_ped`),
   ADD KEY `cod_cliente_ped` (`cod_cliente_ped`);
 
 --
@@ -1007,7 +1053,7 @@ ALTER TABLE `vehiculo`
 -- AUTO_INCREMENT de la tabla `catalogo`
 --
 ALTER TABLE `catalogo`
-  MODIFY `cod_catalogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_catalogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1025,7 +1071,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `cod_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  MODIFY `cod_detalle_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `devolucion`
@@ -1067,13 +1119,13 @@ ALTER TABLE `pedido_catalogo`
 -- AUTO_INCREMENT de la tabla `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -1121,13 +1173,13 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -1150,8 +1202,7 @@ ALTER TABLE `vehiculo`
 --
 ALTER TABLE `catalogo`
   ADD CONSTRAINT `catalogo_ibfk_1` FOREIGN KEY (`cod_promocion_cat`) REFERENCES `promocion` (`cod_promocion`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `catalogo_ibfk_2` FOREIGN KEY (`cod_producto_cata`) REFERENCES `producto` (`cod_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `catalogo_ibfk_3` FOREIGN KEY (`cod_compra_cata`) REFERENCES `compra` (`cod_compra`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `catalogo_ibfk_2` FOREIGN KEY (`cod_producto_cata`) REFERENCES `producto` (`cod_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `cliente`
@@ -1187,7 +1238,7 @@ ALTER TABLE `model_has_roles`
 -- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`cod_promotor_ped`) REFERENCES `promotor` (`cod_promotor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`cod_users_ped`) REFERENCES `promotor` (`cod_promotor`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`cod_cliente_ped`) REFERENCES `cliente` (`cod_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
