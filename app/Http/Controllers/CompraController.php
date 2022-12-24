@@ -9,12 +9,7 @@ use App\Models\Detalle_compra;
 
 class CompraController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware(['permission:Compraindex'])->only('index');
-    $this->middleware(['permission:Compracreate'])->only('create');
- 
-  }
+
 
   public function index()
   {

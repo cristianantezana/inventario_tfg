@@ -154,7 +154,7 @@
                   <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                   <span class="nav-text">Compras</span> <b class="caret"></b>
                 </a>
-                @can('Compraindex')
+               
                   <ul  class="collapse"  id="vehiculos"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
@@ -165,7 +165,7 @@
                     </li>
                   </div>
                 </ul>
-                @endcan
+              
               
             </li> 
               <li  class="has-sub" >
