@@ -10,44 +10,53 @@
               <div class="alert alert-success">{{session('status') }}</div>
           @endif
           <div class="card-body">
-              <div class="row">
-                <div class="form-group col-12">      
-                    <a type="button" href="{{route('pedidos.create')}}" class="btn btn-primary"  style="float: right; color: white; font-weight: bold;">
-                        Registrar pedido <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <div class="dataTables_length" id="order-listing_length">
+                      <form class="form-inline">   
+                            <input class="form-control" id="buscar" name="buscar" type="number" min="0"  onkeypress="return valideKey(event)" placeholder="Numero de pedido"/>
+                              <button class="btn btn-info" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>                         
+                      </form>      
+                  </div>
               </div>
+              <div class="col-sm-4">
+                <a type="button" href="{{route('pedidos.create')}}" class="btn btn-primary"  style="float: right; color: white; font-weight: bold;">
+                  Registrar pedidos <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          <br>
             <div class="card-block table-border-style">
               <div class="table-responsive"> 
                 <table class="table table-bordered table-striped table-hover" >
                     <thead class="bg-primary">
                         <th class="text-center" style="color: #fff;">ID</th>
-                        <th class="text-center" style="color: #fff;">CLIENTE</th>
-                        <th class="text-center" style="color: #fff;">RECIBO</th>
+                        <th class="text-center" style="color: #fff;">CLIENTES</th>
+                        <th class="text-center" style="color: #fff;">N. PEDIDO</th>
+                        <th class="text-center" style="color: #fff;">TOTAL</th>
                         <th class="text-center" style="color: #fff;">FECHA</th>
                         <th class="text-center" style="color: #fff;">ACCIONES</th>
                     </thead>
                     <tbody>
                         <?php $contador = 1?>
-                        @foreach ($pedidos as $cliente)
+                        @foreach ($pedidos as $pedido)
                             <tr>
                                 <td class="text-center">{{$contador}}</td>
-                                <td class="text-center">{{$cliente->cod_users_ped}}</td>
-                                <td class="text-center">{{$cliente->cod_cliente_ped}}</td>
-                                <td class="text-center">{{$cliente->nota}}</td>                             
+                                <td class="text-center">{{$pedido->cliente->persona->nombre.' '.$pedido->cliente->persona->apellido}}</td>      
+                                <td class="text-center">{{$pedido->n_pedido}}</td>
+                                <td class="text-center">{{$pedido->total_pedido}}</td>
+                                <td class="text-center">{{$pedido->fecha_pedido}}</td>                                
                                 <td>
                                     <center>
-                                        <a href="{{ route('usuarios.edit', $cliente->cod_pedido) }}" 
-                                         class="btn btn-warning btn-sm mx-2 editar" ><i class="fa fa-pencil "></i>
+                                        <a href="{{ route('pedidos.show', $pedido->cod_pedido) }}" 
+                                         class="btn btn-info btn-sm mx-2 editar" ><i class="fa fa-eye" aria-hidden="true"></i>
                                         </a>
-                                        <button class="btn btn-danger btn-sm  mx-2 eliminarCliente" action="{{ url('usuarios/destroy',$cliente->id) }}"
-                                            method="DELETE" token="{{ csrf_token() }}" pagina="usuarios">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </button>
-                                        
+                                        <a href="{{ route('pedidos.pdf', $pedido->cod_pedido) }}" 
+                                          class="btn btn-danger btn-sm mx-2 editar"  target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                         </a> 
                                     </center>
-                                </td>
+                                </td> 
                             </tr>
                             <?php $contador++?>
                         @endforeach

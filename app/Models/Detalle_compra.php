@@ -14,4 +14,7 @@ class Detalle_compra extends Model
                             'cod_catalogo_detalle','cantidad_compra','precio_compra','subtotal',
                             'estado','created_at','updated_at'
                           ];
+    public function catalogo(){
+      return $this->belongsTo(Catalogo::class,'cod_catalogo_detalle','cod_catalogo');
+    }
 }

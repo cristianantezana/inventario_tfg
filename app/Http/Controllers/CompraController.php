@@ -6,14 +6,20 @@ use App\Models\Compra;
 use App\Models\Proveedor;
 use App\Models\Catalogo;
 use App\Models\Detalle_compra;
-
+use Barryvdh\DomPDF\Facade\Pdf;
 class CompraController extends Controller
 {
-
-
-  public function index()
+  public function __construct()
   {
-    $compras = Compra::where('estado', "=", "1")->orderBy('cod_compra','desc')->get();
+    $this->middleware(['permission:Compraindex'])->only('index');
+    $this->middleware(['permission:Compracreate'])->only('create');
+ 
+  }
+
+  public function index(Request $request)
+  {
+    $nombre = $request->get('buscar');
+    $compras = Compra::where('estado', "=", "1")->where('n_factura', 'like', '%'.$nombre.'%')->orderBy('cod_compra','desc')->get();
     return view('compras.index', compact('compras'));
   }
 
@@ -55,9 +61,17 @@ class CompraController extends Controller
 
   public function show($id)
   {
-    $compra = Detalle_compra::find($id);
+    $pedidos = Compra::where("cod_compra","=", $id)->get();
+    $detalle_pedido = Detalle_compra::where("cod_compra_detalle","=",$id)->get();
+    return view('compras.show', compact('pedidos','detalle_pedido'));
   }
-
+  public function pdfCompra($id)
+  {
+    $pedidos = Compra::where("cod_compra","=", $id)->get();
+    $detalle_pedido = Detalle_compra::where("cod_compra_detalle","=",$id)->get();
+    $pdf = PDF::loadView('pdf.pdf_compras', compact('pedidos','detalle_pedido'));
+    return $pdf->stream('Detalle_compra');
+  }
   public function edit($id)
   {
     

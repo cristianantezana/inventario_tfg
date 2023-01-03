@@ -156,15 +156,15 @@ width: '100%',
       
       let producto = $("#producto option:selected").text();
       let producto_id = $("#producto").val();
-      if(cantidad != "" && producto != "" && precio != ""){
+      if( producto  != "" && precio > 0 && cantidad > 0 ){
         subtotal[contador]=(cantidad*precio);
         total = total+subtotal[contador];
         let fila = `<tr class="selected" id="fila${contador}">
                     
-                      <td class="text-center"><input type="number" min="0"  class=" text-center"  name="cantidad[]" value="${cantidad}"></td>
+                      <td class="text-center"><input type="hidden"   name="cantidad[]" value="${cantidad}">${cantidad}</td>
                       <td class="text-center"><input  class="form-control text-center" type="hidden" name="idproducto[]" value="${producto_id}">${producto}</td>
-                      <td class="text-center"><input type="number"  min="0"  class=" text-center" name="precio[]" value="${precio}"></td>
-                      <td class="text-center"><input type="number"  min="0"  class=" text-center" name="subtotal[]" value="${subtotal[contador]}"></td>
+                      <td class="text-center"><input type="hidden"   name="precio[]" value="${precio}">${precio}</td>
+                      <td class="text-center"><input type="hidden""   name="subtotal[]" value="${subtotal[contador]}">${subtotal[contador]}</td>
                       <td class="text-center"><button class="btn btn-danger btn-sm mx-2" onclick="eliminar(${contador})">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                           </button>
@@ -175,7 +175,12 @@ width: '100%',
         evaluar();
         $("#table").append(fila);
       }else{
-        alert("error");
+        Swal.fire({
+            icon: 'error',
+            title: 'Ingrese una cantidad o un precio',
+            text: 'Ingresar una cantidad los campos no puede ser 0!',
+          })
+       
       }
     }
 

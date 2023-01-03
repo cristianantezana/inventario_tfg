@@ -10,14 +10,23 @@
               <div class="alert alert-success">{{session('status') }}</div>
           @endif
           <div class="card-body">
-              <div class="row">
-                <div class="form-group col-12">      
-                    <a type="button" href="{{route('compras.create')}}" class="btn btn-primary"  style="float: right; color: white; font-weight: bold;">
-                        Registrar Compra <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </div>
+            <div class="row">
+              <div class="col-sm-8">
+                  <div class="dataTables_length" id="order-listing_length">
+                      <form class="form-inline">   
+                            <input class="form-control" id="buscar" name="buscar" type="number" min="0"  onkeypress="return valideKey(event)" placeholder="Numero de factura"/>
+                              <button class="btn btn-info" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>                         
+                      </form>      
+                  </div>
               </div>
+              <div class="col-sm-4">
+                <a type="button" href="{{route('compras.create')}}" class="btn btn-primary"  style="float: right; color: white; font-weight: bold;">
+                  Registrar Compra <span><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <br>
             <div class="card-block table-border-style">
               <div class="table-responsive"> 
                 <table class="table table-bordered table-striped table-hover" >
@@ -27,6 +36,7 @@
                         <th class="text-center" style="color: #fff;">DESCRIPCION</th>
                         <th class="text-center" style="color: #fff;">N. FACTURA</th>
                         <th class="text-center" style="color: #fff;">FECHA</th>
+                        <th class="text-center" style="color: #fff;">ACCIONES</th>
                         {{-- <th class="text-center" style="color: #fff;">ACCIONES</th> --}}
                     </thead>
                     <tbody>
@@ -37,7 +47,17 @@
                                 <td class="text-center">{{$cliente->proveedor->persona->nombre.' '.$cliente->proveedor->persona->apellido}}</td>
                                 <td class="text-center">{{$cliente->descripcion}}</td>
                                 <td class="text-center">{{$cliente->n_factura}}</td>
-                                <td class="text-center">{{$cliente->fecha}}</td>                             
+                                <td class="text-center">{{$cliente->fecha}}</td>
+                                <td>
+                                  <center>
+                                      <a href="{{ route('compras.show', $cliente->cod_compra) }}" 
+                                       class="btn btn-info btn-sm mx-2 editar" ><i class="fa fa-eye" aria-hidden="true"></i>
+                                      </a>
+                                      <a href="{{ route('compras.pdf', $cliente->cod_compra) }}" 
+                                        class="btn btn-danger btn-sm mx-2 editar"  target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                       </a> 
+                                  </center>
+                              </td>                             
                                 {{-- <td>
                                     <center>
                                         <a href="{{ route('usuarios.edit', $cliente->cod_compra) }}" 

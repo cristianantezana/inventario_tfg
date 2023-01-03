@@ -110,6 +110,7 @@ Route::get('compras/create',[CompraController::class, 'create'])->name('compras.
 Route::post('compras/store',[CompraController::class, 'store'])->name('compras.store');
 Route::get('compras/{id}/edit',[CompraController::class, 'edit'])->name('compras.edit');
 Route::put('compras/update',[CompraController::class, 'update'])->name('compras.update');
+Route::get('compras/{id}/pdf',[CompraController::class, 'pdfCompra'])->name('compras.pdf');
 Route::get('compras/{id}/show',[CompraController::class, 'show'])->name('compras.show');
 Route::get('compras/{id}/destroy',[CompraController::class, 'destroy'])->name('compras.destroy');
 
@@ -136,7 +137,8 @@ Route::delete('medidas/destroy',[MedidaController::class, 'destroy'])->name('med
 Route::get('pedidos',[PedidoController::class, 'index'])->name('pedidos.index');
 Route::get('pedidos/create',[PedidoController::class, 'create'])->name('pedidos.create');
 Route::post('pedidos/store',[PedidoController::class, 'store'])->name('pedidos.store');
-Route::get('pedidos/{id}/edit',[PedidoController::class, 'edit'])->name('pedidos.edit');
+Route::get('pedidos/{id}/pdf',[PedidoController::class, 'pdfPedido'])->name('pedidos.pdf');
+
 Route::put('pedidos/update',[PedidoController::class, 'update'])->name('pedidos.update');
 Route::get('pedidos/{id}/show',[PedidoController::class, 'show'])->name('pedidos.show');
 Route::get('pedidos/{id}/destroy',[PedidoController::class, 'destroy'])->name('pedidos.destroy');

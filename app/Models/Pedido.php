@@ -12,8 +12,8 @@ class Pedido extends Model
   use HasFactory;
   protected $primaryKey = 'cod_pedido';
   protected $table = 'pedido';
-  protected $fillable = [ 'cod_pedido','cod_promotor_ped','cod_cliente_ped',
-                          'nota','estado','created_at','updated_at'
+  protected $fillable = [ 'cod_pedido','cod_cliente_ped',
+                          'fecha_pedido','n_pedido','total_pedido','estado','created_at','updated_at'
                         ];
   //relaciones
   public function devolucion(){

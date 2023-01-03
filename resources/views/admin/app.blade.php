@@ -147,15 +147,14 @@
                   </div>
                 </ul>
               </li>
-              @endcan
+              @endcan           
               <li  class="has-sub" >
-                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#vehiculos"
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#compras"
                   aria-expanded="false" aria-controls="compras">
                   <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                   <span class="nav-text">Compras</span> <b class="caret"></b>
-                </a>
-               
-                  <ul  class="collapse"  id="vehiculos"
+                </a>        
+                  <ul  class="collapse"  id="compras"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
                     <li >
@@ -165,9 +164,27 @@
                     </li>
                   </div>
                 </ul>
+               
+              </li>
+              <li  class="has-sub" >
+                <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pedidos"
+                  aria-expanded="false" aria-controls="compras">
+                  <i class="fa fa-tasks" aria-hidden="true"></i>
+                  <span class="nav-text">Pedidos</span> <b class="caret"></b>
+                </a>
+             
+                  <ul  class="collapse"  id="pedidos"
+                  data-parent="#sidebar-menu">
+                  <div class="sub-menu">
+                    <li >
+                      <a class="sidenav-item-link" href="{{route('pedidos.index')}}">
+                        <span class="nav-text">Pedidos</span>
+                      </a>
+                    </li>
+                  </div>
+                </ul>
               
-              
-            </li> 
+              </li>
               <li  class="has-sub" >
                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#vehiculos"
                   aria-expanded="false" aria-controls="vehiculos">
@@ -178,7 +195,7 @@
                   <ul  class="collapse"  id="vehiculos"
                   data-parent="#sidebar-menu">
                   <div class="sub-menu">
-                    <li >
+                    <li>
                       <a class="sidenav-item-link" href="{{route('vehiculos.index')}}">
                         <span class="nav-text">Vehiculos</span>
                       </a>
